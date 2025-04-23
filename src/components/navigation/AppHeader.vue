@@ -1,5 +1,5 @@
 <template>
- <v-app>
+ <!-- <v-app>
   <v-card>
    <v-layout>
     <v-app-bar color="primary">
@@ -31,7 +31,8 @@
     </v-main>
    </v-layout>
   </v-card>
- </v-app>
+ </v-app> -->
+ <div class="mainDiv">sdfds</div>
 </template>
 
 <script setup lang="ts">
@@ -64,4 +65,9 @@ watch(group, () => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.mainDiv {
+ background-color: gray;
+ height: 100px;
+}
+</style>
