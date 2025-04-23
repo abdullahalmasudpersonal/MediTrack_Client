@@ -3,10 +3,11 @@
   <v-container class="footerContainer">
    <div class="footerDiv">
     <div style="display: flex; align-items: center">
-     <img src="../../assets/image/logo/meditrack_only.png" class="logo" alt="logo" />
+     <img src="../../assets/image/logo/meditrack.png" class="logo" alt="logo" />
      <p
       style="
-       font-size: 25px;
+       font-size: 28px;
+       font-weight: 700;
        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
        color: #dadada;
       "
