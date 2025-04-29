@@ -43,3 +43,72 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+### vue boilarplate template
+
+vbase-3-ts-setup
+
+const router = createRouter({
+history: createWebHistory(import.meta.env.BASE_URL),
+routes: [
+{
+path: '/',
+component: MainLayout,
+// meta: { layout: 'main' },
+children: [
+{ path: '', name: 'home', component: () => import('@/pages/home/HomePage.vue') },
+{ path: 'about', name: 'about', component: () => import('@/pages/about/AboutPage.vue') },
+],
+},
+{
+path: '/auth',
+component: AuthLayout,
+meta: { layout: 'auth' },
+children: [
+{ path: 'login', name: 'login', component: () => import('@/pages/login/LoginPage.vue') },
+{ path: 'register', name: 'register', component: () => import('@/pages/login/SignupPage.vue') },
+],
+},
+{
+path: '/admin',
+component: AdminLayout,
+meta: { layout: 'admin' },
+// children: [
+// {
+// path: '',
+// name: 'admin-dashboard',
+// component: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
+// },
+// {
+// path: 'users',
+// name: 'admin-users',
+// component: () => import('@/pages/admin/users/AdminUsers.vue'),
+// },
+// ],
+},
+{
+path: '/doctor',
+component: DoctorLayout,
+meta: { layout: 'doctor' },
+// children: [
+// {
+// path: '',
+// name: 'doctor-dashboard',
+// component: () => import('@/pages/doctor/dashboard/DoctorDashboard.vue'),
+// },
+// ],
+},
+{
+path: '/patient',
+component: PatientLayout,
+meta: { layout: 'patient' },
+// children: [
+// {
+// path: '',
+// name: 'patient-dashboard',
+// component: () => import('@/pages/patient/dashboard/PatientDashboard.vue'),
+// },
+// ],
+},
+],
+})

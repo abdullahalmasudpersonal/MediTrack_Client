@@ -1,16 +1,38 @@
-<script setup lang="ts">
-import AppHeader from './components/navigation/AppHeader.vue'
-import AppFooter from './components/navigation/AppFooter.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
  <div id="app">
-  <!-- <div> -->
-  <AppHeader />
-  <!-- <div style="height: 2000px; padding-top: 80px">
-   <h1 style="text-align: center; margin-top: 50px">Scroll down to see navbar effect</h1>
-  </div> -->
-  <AppFooter />
-  <!-- </div> -->
+  <router-view> </router-view>
  </div>
 </template>
+
+<!-- <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+// Import Layouts
+import MainLayout from '@/layouts/MainLayout.vue'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import AdminLayout from '@/layouts/AdminLayout.vue'
+
+// Current route object
+const route = useRoute()
+
+// এখানে নির্ধারণ করবো কোন Layout লাগবে
+const layout = computed(() => {
+ const layoutName = (route.meta.layout as string) || '/'
+
+ switch (layoutName) {
+  case 'auth':
+   return AuthLayout
+  case 'admin':
+   return AdminLayout
+  default:
+   return MainLayout
+ }
+})
+</script>
+
+<template>
+ <component :is="layout" />
+</template> -->

@@ -8,7 +8,7 @@
       style="
        font-size: 28px;
        font-weight: 700;
-       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
        color: #dadada;
       "
      >
