@@ -7,14 +7,14 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
+ server: {
+  host: true, // এইভাবে LAN IP-তে bind করবে
+  port: 5173, // চাইলে port-ও নির্ধারণ করতে পারেন
+ },
+ plugins: [vue(), vueJsx(), vueDevTools()],
+ resolve: {
+  alias: {
+   '@': fileURLToPath(new URL('./src', import.meta.url)),
   },
+ },
 })

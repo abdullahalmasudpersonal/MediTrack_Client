@@ -2,7 +2,7 @@
  <div class="header">
   <router-link to="/" style="text-decoration: none">
    <div style="display: flex; align-items: center">
-    <img src="../../assets/image/logo/meditrack.png" class="logo" alt="logo" />
+    <img src="@/assets/image/logo/meditrack.png" class="logo" alt="logo" />
     <p
      style="
       font-weight: 700;
