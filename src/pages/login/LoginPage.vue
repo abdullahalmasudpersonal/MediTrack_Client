@@ -1,21 +1,58 @@
 <script setup lang="ts">
 import ContinueToHomeBtn from './button/ContinueToHomeBtn.vue'
+import { ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
+
+const email = ref('')
+const password = ref('')
+const router = useRouter()
+
+const handleLogin = async () => {
+ try {
+  const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
+   email: email.value,
+   password: password.value,
+  })
+  const { access, refresh } = response?.data?.tokens || {} // adjust if nested under 'token'
+  const user = response?.data?.user
+
+  // Save tokens in localStorage (or cookie if needed)
+  localStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('access_token', access)
+  localStorage.setItem('refresh_token', refresh)
+
+  // ✅ Role অনুযায়ী রাউটিং
+  if (user.role === 'admin') {
+   router.push('/admin')
+  } else if (user.role === 'doctor') {
+   router.push('/doctor')
+  } else if (user.role === 'patient') {
+   router.push('/patient')
+  } else {
+   router.push('/login')
+  }
+ } catch (error) {
+  console.log('error', error)
+  // if (axios.isAxiosError(error)) {
+  //  alert('Login failed: ' + (error.response?.data?.error || 'Unknown error'))
+  // } else {
+  //  alert('An unexpected error occurred')
+  // }
+ }
+}
 </script>
 
 <template>
  <div class="login">
   <ContinueToHomeBtn />
   <div class="loginDiv">
-   <form>
+   <form @submit.prevent="handleLogin">
     <div class="loginFormDiv">
-     <!-- <div style="display: flex; align-items: center; margin-bottom: 10px">
-      <img src="@/assets/image/logo/meditrack.png" class="logo" alt="logo" />
-      <h3 class="loginTitle">&nbsp;Login</h3>
-     </div> -->
      <h3 class="loginTitle">&nbsp;Login</h3>
-     <input type="email" placeholder="Email" class="input" required />
+     <input v-model="email" type="email" placeholder="Email" class="input" required />
      <div>
-      <input type="password" placeholder="Password" class="input" required />
+      <input v-model="password" type="password" placeholder="Password" class="input" required />
       <br />
       <p class="resetPassword" style="">Forget Password</p>
      </div>
