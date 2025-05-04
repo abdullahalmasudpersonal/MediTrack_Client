@@ -35,6 +35,7 @@ const routes = [
  {
   path: '/admin',
   component: AdminLayout,
+  meta: { requiresAuth: true, role: 'admin' },
   children: [
    {
     path: '',
@@ -51,6 +52,7 @@ const routes = [
  {
   path: '/doctor',
   component: DoctorLayout,
+  meta: { requiresAuth: true, role: 'doctor' },
   children: [
    {
     path: '',
@@ -62,6 +64,7 @@ const routes = [
  {
   path: '/patient',
   component: PatientLayout,
+  meta: { requiresAuth: true, role: 'patient' },
   children: [
    {
     path: '',
@@ -75,6 +78,24 @@ const routes = [
 const router = createRouter({
  history: createWebHistory(import.meta.env.BASE_URL),
  routes,
+})
+
+// 🔐 Navigation Guard
+router.beforeEach((to, from, next) => {
+ const token = localStorage.getItem('access_token')
+ const user = JSON.parse(localStorage.getItem('user') || '{}')
+
+ if (to.meta.requiresAuth) {
+  if (!token) {
+   next('/auth/login')
+  } else if (to.meta.role && to.meta.role !== user.role) {
+   next('/auth/login') // অথবা এক্সেস ডিনাই পেইজ
+  } else {
+   next()
+  }
+ } else {
+  next()
+ }
 })
 
 export default router

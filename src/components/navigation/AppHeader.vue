@@ -26,11 +26,34 @@
   </div>
   <div class="headerMenu">
    <ul>
-    <li><router-link style="text-decoration: none" :to="{ name: 'login' }">Login</router-link></li>
+    <li>
+     <router-link v-if="!token" style="text-decoration: none" :to="{ name: 'login' }"
+      >Login</router-link
+     >
+     <router-link v-else style="text-decoration: none" :to="dashboardRoute">Dashboard</router-link>
+    </li>
    </ul>
   </div>
  </div>
 </template>
+
+<script setup lang="ts">
+const token = localStorage.getItem('access_token')
+const user = JSON.parse(localStorage.getItem('user') || 'null')
+const role = user?.role || null
+
+const dashboardRoute = () => {
+ if (role === 'admin') {
+  return { name: 'admin-dashboard' }
+ } else if (role === 'doctor') {
+  return { name: 'doctor-dashboard' }
+ } else if (role === 'patient') {
+  return { name: 'patient-dashboard' }
+ } else {
+  return { name: 'home' }
+ }
+}
+</script>
 
 <style>
 .header {
