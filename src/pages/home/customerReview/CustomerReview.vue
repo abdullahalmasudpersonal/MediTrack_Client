@@ -1,14 +1,14 @@
 <template>
  <v-container>
-  <section class="testimonial-section">
-   <h4 class="text-center text-teal-500 mb-2">Testimonial</h4>
-   <h2 class="text-center text-3xl font-bold mb-10">What Our Clients Say</h2>
+  <section>
+   <h5 class="customerReviewTag"># Testimonial</h5>
+   <h2 class="customerReviewTitle">What Our Clients Say</h2>
 
    <Swiper
     :modules="[Autoplay, Pagination]"
     :loop="true"
     :space-between="20"
-    :autoplay="{ delay: 3000, disableOnInteraction: false }"
+    :autoplay="{ delay: 4000, disableOnInteraction: false }"
     :pagination="{ clickable: true }"
     :breakpoints="{
      0: { slidesPerView: 1 },
@@ -19,18 +19,21 @@
    >
     <SwiperSlide v-for="(review, index) in reviews" :key="index">
      <div class="testimonial-card">
-      <h4>Abdulalh</h4>
-     </div>
-     <!-- <div class="testimonial-card shadow p-6 rounded-lg bg-white h-full">
-     <div class="flex items-center mb-4">
-      <img :src="review.image" alt="Avatar" class="w-12 h-12 rounded-full mr-4" />
-      <div>
-       <h3 class="font-bold text-lg">{{ review.name }}</h3>
-       <p class="text-gray-500 text-sm">{{ review.title }}</p>
+      <div style="display: flex; justify-content: space-between">
+       <div style="display: flex; gap: 10px">
+        <img :src="review.image" alt="Avatar" class="reviewCustomerImage" />
+        <div>
+         <h3 class="font-bold text-lg">{{ review.name }}</h3>
+         <p class="text-gray-500 text-sm">{{ review.title }}</p>
+        </div>
+       </div>
+       <v-icon class="reviewCustomerDoubleQuotation">mdi-format-quote-close</v-icon>
       </div>
+      <p style="margin-top: 15px; font-size: 15px">
+       “Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna
+       dictum porta. Cras ultricies ligula magna dictum porta.”
+      </p>
      </div>
-     <p class="text-gray-700 italic">“{{ review.message }}”</p> -->
-     <!-- </div> -->
     </SwiperSlide>
    </Swiper>
   </section>
@@ -75,18 +78,42 @@ const reviews = [
 </script>
 
 <style scoped>
-.testimonial-section {
- /* padding: 4rem 1rem; */
- background: #8eadcc;
+.customerReviewTag {
+ text-align: center;
+ font-family: 'sans-serif';
+ color: #10b981;
 }
-
+.customerReviewTitle {
+ text-align: center;
+ color: rgb(43, 43, 43);
+ margin-bottom: 40px;
+ font-size: clamp(1.7rem, 2.5vw, 2rem);
+ font-family: system-ui, '-apple-system';
+}
 .testimonial-swiper {
  max-width: 1200px;
  margin: 0 auto;
- background: rgb(113, 93, 133);
+ color: rgb(59, 67, 73);
+}
+.swiper {
+ padding: 2px;
+ padding-bottom: 40px;
 }
 .testimonial-card {
- background: rgb(202, 193, 193) !important;
- min-height: 200px;
+ min-height: 140px;
+ padding: 25px;
+ border-radius: 10px;
+ box-shadow:
+  rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+  rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.reviewCustomerImage {
+ height: 60px;
+ width: 60px;
+ border-radius: 50%;
+}
+.reviewCustomerDoubleQuotation {
+ font-size: 60px;
+ color: rgb(228, 228, 228);
 }
 </style>
