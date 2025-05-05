@@ -49,14 +49,12 @@
  background: linear-gradient(to right, #091222 10%, #0d162e 70%, #03112c);
 }
 .footerContainer {
- padding: 0;
  display: grid;
  grid-template-columns: 25% 25% 25% 25%;
+ gap: 10px;
 }
 .footerDiv {
  min-height: 350px;
- padding: 30px 10px;
- /* border: 1px solid black; */
  font-family: 'Times New Roman', Times, serif;
  font-size: 17px;
  font-weight: bold;

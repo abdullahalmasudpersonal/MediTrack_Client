@@ -30,7 +30,7 @@
      <router-link v-if="!token" style="text-decoration: none" :to="{ name: 'login' }"
       >Login</router-link
      >
-     <router-link v-else style="text-decoration: none" :to="dashboardRoute">Dashboard</router-link>
+     <router-link v-else style="text-decoration: none" :to="dashboardPath">Dashboard</router-link>
     </li>
    </ul>
   </div>
@@ -38,21 +38,15 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const token = localStorage.getItem('access_token')
 const user = JSON.parse(localStorage.getItem('user') || 'null')
-const role = user?.role || null
+const role = user?.role
 
-const dashboardRoute = () => {
- if (role === 'admin') {
-  return { name: 'admin-dashboard' }
- } else if (role === 'doctor') {
-  return { name: 'doctor-dashboard' }
- } else if (role === 'patient') {
-  return { name: 'patient-dashboard' }
- } else {
-  return { name: 'home' }
- }
-}
+const dashboardPath = computed(() => {
+ return `/${role}`
+})
 </script>
 
 <style>

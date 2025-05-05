@@ -2,16 +2,26 @@
  <aside class="sidebar">
   <nav>
    <ul>
+    <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/doctor">Dashboard</router-link></li>
     <li><router-link to="/doctor/appointments">Appointments</router-link></li>
     <li><router-link to="/doctor/profile">Profile</router-link></li>
+    <li @click="logout">Logout</li>
    </ul>
   </nav>
  </aside>
 </template>
 
 <script setup lang="ts">
-// No extra logic needed for now
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const logout = () => {
+ localStorage.removeItem('access_token')
+ localStorage.removeItem('user')
+ localStorage.removeItem('refresh_token')
+ router.push({ name: 'login' })
+}
 </script>
 
 <style scoped>

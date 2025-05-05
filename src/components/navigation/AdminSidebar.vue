@@ -2,8 +2,10 @@
  <aside class="sidebar">
   <nav>
    <ul>
+    <li><router-link to="/">Home</router-link></li>
     <li><router-link to="/admin">Dashboard</router-link></li>
     <li><router-link to="/admin/users">Manage Users</router-link></li>
+    <li @click="logout">Logout</li>
     <!-- <li><router-link to="/admin/settings">Settings</router-link></li> -->
    </ul>
   </nav>
@@ -11,7 +13,15 @@
 </template>
 
 <script setup lang="ts">
-// No extra logic needed for now
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const logout = () => {
+ localStorage.removeItem('access_token')
+ localStorage.removeItem('user')
+ localStorage.removeItem('refresh_token')
+ router.push({ name: 'login' })
+}
 </script>
 
 <style scoped>
