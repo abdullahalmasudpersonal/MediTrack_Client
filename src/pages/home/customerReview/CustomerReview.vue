@@ -82,6 +82,7 @@ const reviews = [
  text-align: center;
  font-family: 'sans-serif';
  color: #10b981;
+ margin-top: 40px;
 }
 .customerReviewTitle {
  text-align: center;
