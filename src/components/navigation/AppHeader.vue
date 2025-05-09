@@ -1,39 +1,43 @@
 <template>
  <div class="header">
-  <router-link to="/" style="text-decoration: none">
-   <div style="display: flex; align-items: center">
-    <img src="@/assets/image/logo/meditrack.png" class="logo" alt="logo" />
-    <p
-     style="
-      font-weight: 700;
-      font-size: 24px;
-      /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-      margin: 0;
-     "
-    >
-     <!-- &nbsp;  -->
-     MediTrack
-    </p>
+  <v-container>
+   <div class="headerDiv">
+    <router-link to="/" style="text-decoration: none">
+     <div style="display: flex; align-items: center">
+      <img src="@/assets/image/logo/meditrack.png" class="logo" alt="logo" />
+      <p
+       style="
+        font-weight: 700;
+        font-size: 24px;
+        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+        margin: 0;
+       "
+      >
+       <!-- &nbsp;  -->
+       MediTrack
+      </p>
+     </div>
+    </router-link>
+    <div class="headerMenu">
+     <ul>
+      <li><router-link style="text-decoration: none" to="/services">Services</router-link></li>
+      <li><router-link style="text-decoration: none" to="/about">About</router-link></li>
+      <li><router-link style="text-decoration: none" to="/blog">Blog</router-link></li>
+      <li><router-link style="text-decoration: none" to="/contactus">Contact Us</router-link></li>
+     </ul>
+    </div>
+    <div class="headerMenu">
+     <ul>
+      <li>
+       <router-link v-if="!token" style="text-decoration: none" :to="{ name: 'login' }"
+        >Login</router-link
+       >
+       <router-link v-else style="text-decoration: none" :to="dashboardPath">Dashboard</router-link>
+      </li>
+     </ul>
+    </div>
    </div>
-  </router-link>
-  <div class="headerMenu">
-   <ul>
-    <li><router-link style="text-decoration: none" to="/services">Services</router-link></li>
-    <li><router-link style="text-decoration: none" to="/about">About</router-link></li>
-    <li><router-link style="text-decoration: none" to="/blog">Blog</router-link></li>
-    <li><router-link style="text-decoration: none" to="/contactus">Contact Us</router-link></li>
-   </ul>
-  </div>
-  <div class="headerMenu">
-   <ul>
-    <li>
-     <router-link v-if="!token" style="text-decoration: none" :to="{ name: 'login' }"
-      >Login</router-link
-     >
-     <router-link v-else style="text-decoration: none" :to="dashboardPath">Dashboard</router-link>
-    </li>
-   </ul>
-  </div>
+  </v-container>
  </div>
 </template>
 
@@ -51,12 +55,21 @@ const dashboardPath = computed(() => {
 
 <style>
 .header {
+ background: rgb(224, 224, 224);
+ position: sticky;
+ top: 0;
+ z-index: 10;
+}
+.v-container {
+ padding-top: 0 !important;
+ padding-bottom: 0 !important;
+}
+.headerDiv {
  height: 70px;
  background: rgb(224, 224, 224);
- padding: 10px;
  display: flex;
  align-items: center;
- justify-content: space-around;
+ justify-content: space-between;
 }
 .logo {
  height: 50px;

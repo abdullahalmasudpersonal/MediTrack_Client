@@ -66,6 +66,8 @@
  text-align: center;
  font-family: 'sans-serif';
  color: #10b981;
+ margin-top: 40px;
+ font-size: 16px;
 }
 .ourSpecialistHeading {
  font-size: clamp(1.4rem, 2.5vw, 2rem);
