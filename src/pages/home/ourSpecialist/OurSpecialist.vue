@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
  <div class="ourSpecialist">
   <v-container>
    <h5 class="ourSecialistTag"># Meet Our Specialists</h5>
@@ -141,5 +141,33 @@
   gap: 25px;
   margin: 40px auto;
  }
+}
+</style> -->
+
+<template>
+ <v-container class="masud">
+  <!-- <p>Left Column</p> -->
+  <v-row>
+   <p>Left Column</p>
+   <p>Left Column</p>
+   <p>Left Column</p>
+   <p>Left Column</p>
+  </v-row>
+  <!-- <v-row>
+   <v-col cols="12" md="6">
+    <p>Left Column</p>
+   </v-col>
+   <v-col cols="12" md="6">
+    <p>Right Column</p>
+   </v-col>
+  </v-row> -->
+ </v-container>
+</template>
+
+<style scoped>
+.masud {
+ background-color: rgb(153, 88, 88);
+ height: 500px;
+ width: 510px;
 }
 </style>
