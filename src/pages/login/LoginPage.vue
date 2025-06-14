@@ -4,8 +4,8 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 
-const email = ref('')
-const password = ref('')
+const email = ref('abdullah@gmail.com')
+const password = ref('123456')
 const router = useRouter()
 
 const handleLogin = async () => {
@@ -16,6 +16,7 @@ const handleLogin = async () => {
   })
   const { access, refresh } = response?.data?.tokens || {} // adjust if nested under 'token'
   const user = response?.data?.user
+  console.log(response, 'response')
 
   // Save tokens in localStorage (or cookie if needed)
   localStorage.setItem('user', JSON.stringify(user))

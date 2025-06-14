@@ -4,11 +4,9 @@ import AppFooter from '../components/navigation/AppFooter.vue'
 </script>
 
 <template>
- <div>
-  <!-- <AppHeader /> -->
-  <router-view> </router-view>
-  <AppFooter />
- </div>
+ <AppHeader />
+ <router-view> </router-view>
+ <AppFooter />
 </template>
 
 <script setup lang="ts"></script>

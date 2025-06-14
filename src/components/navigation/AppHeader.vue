@@ -5,21 +5,12 @@
     <router-link to="/" style="text-decoration: none">
      <div style="display: flex; align-items: center">
       <img src="@/assets/image/logo/meditrack.png" class="logo" alt="logo" />
-      <p
-       style="
-        font-weight: 700;
-        font-size: 24px;
-        /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-        margin: 0;
-       "
-      >
-       <!-- &nbsp;  -->
-       MediTrack
-      </p>
+      <p style="font-weight: 700; font-size: 24px; margin: 0">MediTrack</p>
      </div>
     </router-link>
     <div class="headerMenu">
      <ul>
+      <li><router-link style="text-decoration: none" to="/services">Home</router-link></li>
       <li><router-link style="text-decoration: none" to="/services">Services</router-link></li>
       <li><router-link style="text-decoration: none" to="/about">About</router-link></li>
       <li><router-link style="text-decoration: none" to="/blog">Blog</router-link></li>
@@ -28,6 +19,7 @@
     </div>
     <div class="headerMenu">
      <ul>
+      <li><router-link style="text-decoration: none" to="/contactus">Appointment</router-link></li>
       <li>
        <router-link v-if="!token" style="text-decoration: none" :to="{ name: 'login' }"
         >Login</router-link
@@ -63,6 +55,7 @@ const dashboardPath = computed(() => {
 .v-container {
  padding-top: 0 !important;
  padding-bottom: 0 !important;
+ max-width: 1400px !important;
 }
 .headerDiv {
  height: 70px;
