@@ -1,5 +1,4 @@
-import './assets/main.css'
-
+import './assets/global.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import '@mdi/font/css/materialdesignicons.css'
@@ -11,9 +10,9 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
 const vuetify = createVuetify({
-  components,
-  directives,
-  // ssr: true,
+ components,
+ directives,
+ // ssr: true,
 })
 
 const app = createApp(App)

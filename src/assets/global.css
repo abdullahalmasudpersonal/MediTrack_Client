@@ -1,0 +1,16 @@
+*,
+*::before,
+*::after {
+ box-sizing: border-box;
+ margin: 0;
+ font-family: system-ui;
+ /* font-weight: normal; */
+}
+
+.v-container {
+ padding-top: 0 !important;
+ padding-bottom: 0 !important;
+ max-width: 1400px !important;
+ width: 100% !important;
+ margin: 0 auto !important;
+}

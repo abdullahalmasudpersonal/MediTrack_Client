@@ -12,16 +12,16 @@ const routes = [
   children: [
    { path: '', name: 'home', component: () => import('@/pages/home/HomePage.vue') },
    {
+    path: 'doctor-list',
+    name: 'doctorlist',
+    component: () => import('@/pages/doctorList/DoctorList.vue'),
+   },
+   {
     path: 'services',
     name: 'services',
     component: () => import('@/pages/ourServices/ServicesPage.vue'),
    },
-   { path: 'about', name: 'about', component: () => import('@/pages/doctorList/DoctorList.vue') },
-   {
-    path: 'doctor-list',
-    name: 'doctorlist',
-    component: () => import('@/pages/about/AboutPage.vue'),
-   },
+   { path: 'about', name: 'about', component: () => import('@/pages/about/AboutPage.vue') },
    { path: 'blog', name: 'blog', component: () => import('@/pages/blog/BlogPage.vue') },
    {
     path: 'contactus',

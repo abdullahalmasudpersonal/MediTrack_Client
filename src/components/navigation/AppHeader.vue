@@ -10,7 +10,10 @@
     </router-link>
     <div class="headerMenu">
      <ul>
-      <li><router-link style="text-decoration: none" to="/services">Home</router-link></li>
+      <li><router-link style="text-decoration: none" to="/">Home</router-link></li>
+      <li>
+       <router-link style="text-decoration: none" to="/doctor-list">Find Doctor</router-link>
+      </li>
       <li><router-link style="text-decoration: none" to="/services">Services</router-link></li>
       <li><router-link style="text-decoration: none" to="/about">About</router-link></li>
       <li><router-link style="text-decoration: none" to="/blog">Blog</router-link></li>
@@ -51,11 +54,6 @@ const dashboardPath = computed(() => {
  position: sticky;
  top: 0;
  z-index: 10;
-}
-.v-container {
- padding-top: 0 !important;
- padding-bottom: 0 !important;
- max-width: 1400px !important;
 }
 .headerDiv {
  height: 70px;
