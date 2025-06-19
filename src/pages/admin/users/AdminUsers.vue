@@ -1,7 +1,5 @@
 <template>
- <div>
-  <h4>Admin Users</h4>
- </div>
+ <p>skdj</p>
 </template>
 
 <script setup lang="ts"></script>
