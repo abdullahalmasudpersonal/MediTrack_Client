@@ -57,6 +57,21 @@ const routes = [
     name: 'admin-users',
     component: () => import('@/pages/admin/users/AdminUsers.vue'),
    },
+   {
+    path: 'doctor-list',
+    name: 'doctor-list',
+    component: () => import('@/pages/admin/adminDoctor/DoctorList.vue'),
+   },
+   {
+    path: 'create-doctor',
+    name: 'create-doctor',
+    component: () => import('@/pages/admin/adminDoctor/CreateDoctor.vue'),
+   },
+   {
+    path: 'patient-list',
+    name: 'patient-list',
+    component: () => import('@/pages/admin/adminPatient/PatientList.vue'),
+   },
   ],
  },
  {

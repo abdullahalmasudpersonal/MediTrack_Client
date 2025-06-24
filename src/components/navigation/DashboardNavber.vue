@@ -9,9 +9,6 @@
    <v-icon>mdi-account-circle</v-icon>
   </v-btn>
  </v-app-bar>
- <!-- <div>
-  <h4>Navber</h4>
- </div> -->
 </template>
 
 <script setup lang="ts"></script>

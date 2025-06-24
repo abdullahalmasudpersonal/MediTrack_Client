@@ -1,10 +1,8 @@
 <template>
  <div>
-  <h4>
-   Admin Dashboard <br />sdfdfgdf
-   <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto consectetur dolorum eum.
+  <h4> Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto consectetur dolorum eum.
    Incidunt voluptas natus aspernatur asperiores reprehenderit aperiam officiis assumenda fugit aut
-   culpa, quidem alias autem accusantium, unde repudiandae! -->
+   culpa, quidem alias autem accusantium, unde repudiandae!
   </h4>
  </div>
 </template>

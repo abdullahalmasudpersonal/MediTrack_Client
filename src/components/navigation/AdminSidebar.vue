@@ -94,22 +94,22 @@
 
 const menuItems = [
  {
-  title: 'Home',
+  title: 'Dashboard',
   icon: 'mdi-home',
-  to: '/home',
+  to: '/admin',
  },
  {
-  title: 'Users',
-  icon: 'mdi-account-circle',
+  title: 'Doctor',
+  icon: 'mdi-doctor',
   children: [
-   { title: 'Admin', icon: 'mdi-account-multiple-outline', to: '/admin' },
-   { title: 'Actions', icon: 'mdi-cog-outline', to: '/actions' },
+   { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
+   { title: 'Create', icon: 'mdi-account-plus-outline', to: '/admin/create-doctor' },
   ],
  },
  {
-  title: 'Settings',
-  icon: 'mdi-cog',
-  to: '/settings',
+  title: 'Patient',
+  icon: 'mdi-account-injury-outline',
+  to: '/admin/patient-list',
  },
  // {
  //  title: 'Doctor',
