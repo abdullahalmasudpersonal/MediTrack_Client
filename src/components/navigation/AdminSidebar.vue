@@ -12,49 +12,113 @@
 </template> -->
 
 <template>
- <v-card>
-  <v-layout>
-   <v-navigation-drawer permanent>
-    <template v-slot:prepend>
-     <v-list-item lines="two"></v-list-item>
+ <v-navigation-drawer permanent>
+  <template v-slot:prepend>
+   <div class="d-flex align-center justify-center py-3">
+    <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
+    <span class="text-h5 font-weight-bold">MediTrack</span>
+   </div>
+  </template>
+  <v-divider></v-divider>
+
+  <!-- <v-list v-model:opened="open">
+   <v-list-item prepend-icon="mdi-home" title="Home"></v-list-item>
+
+   <v-list-group value="Users">
+    <template v-slot:activator="{ props }">
+     <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="Users"></v-list-item>
     </template>
 
-    <v-divider></v-divider>
+    <v-list-group value="Admin">
+     <template v-slot:activator="{ props }">
+      <v-list-item v-bind="props" title="Admin"></v-list-item>
+     </template>
 
-    <v-list density="compact" nav>
      <v-list-item
-      prepend-icon="mdi-dashboard"
-      title="Dashboard"
-      value="dashboard"
-      to="/admin"
-      nav
-      exact
+      v-for="([title, icon], i) in admins"
+      :key="i"
+      :prepend-icon="icon"
+      :title="title"
+      :value="title"
      ></v-list-item>
+    </v-list-group>
+
+    <v-list-group value="Actions">
+     <template v-slot:activator="{ props }">
+      <v-list-item v-bind="props" title="Actions"></v-list-item>
+     </template>
+
      <v-list-item
-      prepend-icon="mdi-account-group-outline"
-      title="Users"
-      value="users"
-      to="/admin/users"
-      nav
-      exact
+      v-for="([title, icon], i) in cruds"
+      :key="i"
+      :prepend-icon="icon"
+      :title="title"
+      :value="title"
      ></v-list-item>
-    </v-list>
-   </v-navigation-drawer>
-   <v-main style="height: 250px"></v-main>
-  </v-layout>
- </v-card>
+    </v-list-group>
+   </v-list-group>
+  </v-list> -->
+
+  <v-list>
+   <template v-for="(item, i) in menuItems" :key="i">
+    <v-list-group v-if="item.children" :value="item.title">
+     <template #activator="{ props }">
+      <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" />
+     </template>
+
+     <v-list-item
+      v-for="(child, j) in item.children"
+      :key="j"
+      :prepend-icon="child.icon"
+      :title="child.title"
+      :to="child.to"
+     />
+    </v-list-group>
+
+    <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" />
+   </template>
+  </v-list>
+ </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-const router = useRouter()
+// import { useRouter } from 'vue-router'
+// const router = useRouter()
 
-const logout = () => {
- localStorage.removeItem('access_token')
- localStorage.removeItem('user')
- localStorage.removeItem('refresh_token')
- router.push({ name: 'login' })
-}
+// const logout = () => {
+//  localStorage.removeItem('access_token')
+//  localStorage.removeItem('user')
+//  localStorage.removeItem('refresh_token')
+//  router.push({ name: 'login' })
+// }
+
+const menuItems = [
+ {
+  title: 'Home',
+  icon: 'mdi-home',
+  to: '/home',
+ },
+ {
+  title: 'Users',
+  icon: 'mdi-account-circle',
+  children: [
+   { title: 'Admin', icon: 'mdi-account-multiple-outline', to: '/admin' },
+   { title: 'Actions', icon: 'mdi-cog-outline', to: '/actions' },
+  ],
+ },
+ {
+  title: 'Settings',
+  icon: 'mdi-cog',
+  to: '/settings',
+ },
+ // {
+ //  title: 'Doctor',
+ //  children: [{ title: 'Create' }, { title: 'Update' }, { title: 'List' }],
+ // },
+ // {
+ //  title: 'Action',
+ // },
+]
 </script>
 
 <style scoped>
@@ -78,5 +142,13 @@ const logout = () => {
 }
 .sidebar ul li a:hover {
  color: #1abc9c;
+}
+
+.v-list {
+ background-color: #2f3142;
+ color: white;
+}
+.v-list-item-title {
+ font-weight: 500;
 }
 </style>
