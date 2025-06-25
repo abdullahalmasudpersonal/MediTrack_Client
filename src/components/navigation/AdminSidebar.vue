@@ -21,49 +21,11 @@
   </template>
   <v-divider></v-divider>
 
-  <!-- <v-list v-model:opened="open">
-   <v-list-item prepend-icon="mdi-home" title="Home"></v-list-item>
-
-   <v-list-group value="Users">
-    <template v-slot:activator="{ props }">
-     <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="Users"></v-list-item>
-    </template>
-
-    <v-list-group value="Admin">
-     <template v-slot:activator="{ props }">
-      <v-list-item v-bind="props" title="Admin"></v-list-item>
-     </template>
-
-     <v-list-item
-      v-for="([title, icon], i) in admins"
-      :key="i"
-      :prepend-icon="icon"
-      :title="title"
-      :value="title"
-     ></v-list-item>
-    </v-list-group>
-
-    <v-list-group value="Actions">
-     <template v-slot:activator="{ props }">
-      <v-list-item v-bind="props" title="Actions"></v-list-item>
-     </template>
-
-     <v-list-item
-      v-for="([title, icon], i) in cruds"
-      :key="i"
-      :prepend-icon="icon"
-      :title="title"
-      :value="title"
-     ></v-list-item>
-    </v-list-group>
-   </v-list-group>
-  </v-list> -->
-
   <v-list>
-   <template v-for="(item, i) in menuItems" :key="i">
+   <template v-for="item in menuItems" :key="item.title">
     <v-list-group v-if="item.children" :value="item.title">
      <template #activator="{ props }">
-      <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" />
+      <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" exact />
      </template>
 
      <v-list-item
@@ -72,10 +34,11 @@
       :prepend-icon="child.icon"
       :title="child.title"
       :to="child.to"
+      exact
      />
     </v-list-group>
 
-    <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" />
+    <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" exact />
    </template>
   </v-list>
  </v-navigation-drawer>
@@ -111,13 +74,6 @@ const menuItems = [
   icon: 'mdi-account-injury-outline',
   to: '/admin/patient-list',
  },
- // {
- //  title: 'Doctor',
- //  children: [{ title: 'Create' }, { title: 'Update' }, { title: 'List' }],
- // },
- // {
- //  title: 'Action',
- // },
 ]
 </script>
 
