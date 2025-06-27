@@ -12,7 +12,7 @@
 </template> -->
 
 <template>
- <v-navigation-drawer permanent class="sideber-bg-color text-white">
+ <v-navigation-drawer class="sideber-bg-color text-white">
   <template v-slot:prepend>
    <router-link to="/" class="text-decoration-none">
     <div class="d-flex align-center justify-center py-3">
