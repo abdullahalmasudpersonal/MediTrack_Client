@@ -12,38 +12,36 @@
 </template> -->
 
 <template>
- <v-navigation-drawer class="sideber-bg-color text-white">
-  <template v-slot:prepend>
-   <router-link to="/" class="text-decoration-none">
-    <div class="d-flex align-center justify-center py-3">
-     <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
-     <span class="text-h5 font-weight-bold">MediTrack</span>
-    </div>
-   </router-link>
+ <!-- <template v-slot:prepend> -->
+ <router-link to="/" class="text-decoration-none">
+  <div class="d-flex align-center justify-center py-3">
+   <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
+   <span class="text-h5 font-weight-bold">MediTrack</span>
+  </div>
+ </router-link>
+ <!-- </template> -->
+ <v-divider></v-divider>
+
+ <v-list>
+  <template v-for="item in menuItems" :key="item.title">
+   <v-list-group v-if="item.children" :value="item.title">
+    <template #activator="{ props }">
+     <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" exact />
+    </template>
+
+    <v-list-item
+     v-for="(child, j) in item.children"
+     :key="j"
+     :prepend-icon="child.icon"
+     :title="child.title"
+     :to="child.to"
+     exact
+    />
+   </v-list-group>
+
+   <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" exact />
   </template>
-  <v-divider></v-divider>
-
-  <v-list>
-   <template v-for="item in menuItems" :key="item.title">
-    <v-list-group v-if="item.children" :value="item.title">
-     <template #activator="{ props }">
-      <v-list-item v-bind="props" :prepend-icon="item.icon" :title="item.title" exact />
-     </template>
-
-     <v-list-item
-      v-for="(child, j) in item.children"
-      :key="j"
-      :prepend-icon="child.icon"
-      :title="child.title"
-      :to="child.to"
-      exact
-     />
-    </v-list-group>
-
-    <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" exact />
-   </template>
-  </v-list>
- </v-navigation-drawer>
+ </v-list>
 </template>
 
 <script setup lang="ts">
@@ -80,9 +78,6 @@ const menuItems = [
 </script>
 
 <style scoped>
-.sideber-bg-color {
- background-color: rgb(40, 30, 85);
-}
 /* .v-navigation-drawer {
  height: 100vh;
  position: fixed;

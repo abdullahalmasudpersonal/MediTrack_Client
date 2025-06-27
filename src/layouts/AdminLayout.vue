@@ -12,7 +12,7 @@
   <v-main>
    <div class="admin-content">
     <div class="admin-content-div">
-     <DashboardNavber />
+     <DashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>
@@ -20,8 +20,8 @@
  </v-app>
 </template>
 <script setup lang="ts">
-import AdminSidebar from '@/components/navigation/AdminSidebar.vue'
-import DashboardNavber from '@/components/navigation/DashboardNavber.vue'
+import AdminSidebar from '@/components/navigation/sideberNavigation/AdminSidebar.vue'
+import DashboardNavber from '@/components/navigation/dashboardNavber/AdminDashboardNavber.vue'
 
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 const drawer = ref(true)
@@ -45,6 +45,9 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.sideber-bg-color {
+ background-color: rgb(40, 30, 85);
+}
 .v-main {
  flex: 1;
  background-color: #25293c;

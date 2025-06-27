@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import DoctorSidebar from '@/components/navigation/DoctorSidebar.vue'
+import DoctorSidebar from '@/components/navigation/sideberNavigation/DoctorSidebar.vue'
 </script>
 
 <style scoped>
