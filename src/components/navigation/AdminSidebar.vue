@@ -12,12 +12,14 @@
 </template> -->
 
 <template>
- <v-navigation-drawer permanent>
+ <v-navigation-drawer permanent class="sideber-bg-color text-white">
   <template v-slot:prepend>
-   <div class="d-flex align-center justify-center py-3">
-    <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
-    <span class="text-h5 font-weight-bold">MediTrack</span>
-   </div>
+   <router-link to="/" class="text-decoration-none">
+    <div class="d-flex align-center justify-center py-3">
+     <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
+     <span class="text-h5 font-weight-bold">MediTrack</span>
+    </div>
+   </router-link>
   </template>
   <v-divider></v-divider>
 
@@ -78,33 +80,13 @@ const menuItems = [
 </script>
 
 <style scoped>
-.sidebar {
- width: 250px;
- background-color: #2c3e50;
- min-height: 100vh;
- padding: 20px;
- color: #ecf0f1;
+.sideber-bg-color {
+ background-color: rgb(40, 30, 85);
 }
-.sidebar ul {
- list-style: none;
- padding: 0;
-}
-.sidebar ul li {
- margin-bottom: 20px;
-}
-.sidebar ul li a {
- color: inherit;
- text-decoration: none;
-}
-.sidebar ul li a:hover {
- color: #1abc9c;
-}
-
-.v-list {
- background-color: #2f3142;
- color: white;
-}
-.v-list-item-title {
- font-weight: 500;
-}
+/* .v-navigation-drawer {
+ height: 100vh;
+ position: fixed;
+ top: 0;
+ left: 0;
+} */
 </style>

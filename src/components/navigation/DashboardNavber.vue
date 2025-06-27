@@ -1,16 +1,18 @@
 <template>
- <v-app-bar flat color="primary" dark>
-  <v-app-bar-title>Admin Panel</v-app-bar-title>
-  <v-spacer></v-spacer>
-  <v-btn icon>
-   <v-icon>mdi-bell</v-icon>
-  </v-btn>
-  <v-btn icon>
-   <v-icon>mdi-account-circle</v-icon>
-  </v-btn>
- </v-app-bar>
+ <div class="admin-navber">
+  <!-- // -->
+ </div>
 </template>
 
 <script setup lang="ts"></script>
 
-<style scoped></style>
+<style scoped>
+.admin-navber {
+ position: sticky;
+ top: 20px;
+ height: 60px;
+ background-color: #59595e;
+ border-radius: 5px;
+ margin-bottom: 30px;
+}
+</style>
