@@ -12,7 +12,7 @@
   <v-main>
    <div class="admin-content">
     <div class="admin-content-div">
-     <DashboardNavber @toggle-drawer="drawer = !drawer" />
+     <AdminDashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>
@@ -21,9 +21,9 @@
 </template>
 <script setup lang="ts">
 import AdminSidebar from '@/components/navigation/sideberNavigation/AdminSidebar.vue'
-import DashboardNavber from '@/components/navigation/dashboardNavber/AdminDashboardNavber.vue'
 
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import AdminDashboardNavber from '@/components/navigation/dashboardNavber/AdminDashboardNavber.vue'
 const drawer = ref(true)
 const windowWidth = ref(window.innerWidth)
 const isDesktop = computed(() => windowWidth.value > 1000)
