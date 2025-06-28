@@ -1,6 +1,17 @@
 <template>
  <div class="admin-navber">
-  <button v-if="!isDesktop" @click="$emit('toggle-drawer')"><v-icon>mdi-menu</v-icon></button>
+  <div class="d-flex align-center justify-center">
+   <button v-if="!isDesktop" @click="$emit('toggle-drawer')"><v-icon>mdi-menu</v-icon></button>
+   <p class="text-h6 ml-5">Admin Panel</p>
+  </div>
+  <div>
+   <v-img
+    style="cursor: pointer"
+    src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
+    width="40"
+    class="rounded-circle"
+   />
+  </div>
  </div>
 </template>
 
@@ -32,6 +43,7 @@ defineEmits(['toggle-drawer'])
  margin-bottom: 30px;
  display: flex;
  align-items: center;
- padding: 10px;
+ justify-content: space-between;
+ padding: 10px 15px;
 }
 </style>
