@@ -84,6 +84,21 @@ const routes = [
     name: 'doctor-dashboard',
     component: () => import('@/pages/doctor/dashboard/DoctorDashboard.vue'),
    },
+   {
+    path: 'doctor-appointment',
+    name: 'doctor-appointment',
+    component: () => import('@/pages/doctor/doctorAppointment/DoctorAppointment.vue'),
+   },
+   {
+    path: 'doctor-patient',
+    name: 'doctor-patient',
+    component: () => import('@/pages/doctor/doctorPatient/DoctorPatient.vue'),
+   },
+   {
+    path: 'doctor-prescription',
+    name: 'doctor-prescription',
+    component: () => import('@/pages/doctor/doctorPrescription/DoctorPrescription.vue'),
+   },
   ],
  },
  {

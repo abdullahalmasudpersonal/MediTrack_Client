@@ -15,7 +15,7 @@
  <!-- <template v-slot:prepend> -->
  <router-link to="/" class="text-decoration-none">
   <div class="d-flex align-center justify-center py-3">
-   <v-img src="/src/assets/image/logo/meditrack.png" max-width="55" class="mr-2" />
+   <v-img src="/src/assets/image/logo/meditrack.png" max-width="50" class="mr-2" />
    <span class="text-h5 font-weight-bold">MediTrack</span>
   </div>
  </router-link>

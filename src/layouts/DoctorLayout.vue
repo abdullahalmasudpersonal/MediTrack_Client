@@ -7,10 +7,12 @@
    app
    class="sideber-bg-color text-white"
   >
+   <DoctorSidebar />
   </v-navigation-drawer>
   <v-main>
    <div class="doctor-content">
     <div class="doctor-content-div">
+     <DoctorDashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>
@@ -26,6 +28,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import DoctorDashboardNavber from '@/components/navigation/dashboardNavber/DoctorDashboardNavber.vue'
 import DoctorSidebar from '@/components/navigation/sideberNavigation/DoctorSidebar.vue'
 
 const drawer = ref(true)
