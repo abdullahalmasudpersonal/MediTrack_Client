@@ -77,6 +77,7 @@ const logout = () => {
    </v-list-group>
 
    <v-list-item v-else :prepend-icon="item.icon" :title="item.title" :to="item.to" exact />
+   <!-- <v-list-item title="Logout" /> -->
   </template>
  </v-list>
 </template>
