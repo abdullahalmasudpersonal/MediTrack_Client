@@ -1,29 +1,19 @@
 <script setup lang="ts">
 import ContinueToHomeBtn from './button/ContinueToHomeBtn.vue'
 import { ref } from 'vue'
-import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/pinia/stores/authStore'
 
 const email = ref('abdullah@gmail.com')
 const password = ref('123456')
 const router = useRouter()
+const store = useAuthStore()
 
 const handleLogin = async () => {
  try {
-  const response = await axios.post(`${import.meta.env.VITE_MEDITRACK_SERVER_LINK}/auth/login/`, {
-   email: email.value,
-   password: password.value,
-  })
-  const { access, refresh } = response?.data?.tokens || {} // adjust if nested under 'token'
-  const user = response?.data?.user
-  console.log(response, 'response')
+  const res = await store.login({ email: email.value, password: password.value })
+  const user = res?.data?.user
 
-  // Save tokens in localStorage (or cookie if needed)
-  localStorage.setItem('user', JSON.stringify(user))
-  localStorage.setItem('access_token', access)
-  localStorage.setItem('refresh_token', refresh)
-
-  // ✅ Role অনুযায়ী রাউটিং
   if (user.role === 'admin') {
    router.push('/admin')
   } else if (user.role === 'doctor') {
@@ -35,12 +25,40 @@ const handleLogin = async () => {
   }
  } catch (error) {
   console.log('error', error)
-  // if (axios.isAxiosError(error)) {
-  //  alert('Login failed: ' + (error.response?.data?.error || 'Unknown error'))
-  // } else {
-  //  alert('An unexpected error occurred')
-  // }
  }
+
+ // try {
+ //  const response = await axios.post(`${import.meta.env.VITE_MEDITRACK_SERVER_LINK}/auth/login/`, {
+ //   email: email.value,
+ //   password: password.value,
+ //  })
+ //  const { access, refresh } = response?.data?.tokens || {} // adjust if nested under 'token'
+ //  const user = response?.data?.user
+ //  console.log(response, 'response')
+
+ //  // Save tokens in localStorage (or cookie if needed)
+ //  localStorage.setItem('user', JSON.stringify(user))
+ //  localStorage.setItem('access_token', access)
+ //  localStorage.setItem('refresh_token', refresh)
+
+ //  // ✅ Role অনুযায়ী রাউটিং
+ //  if (user.role === 'admin') {
+ //   router.push('/admin')
+ //  } else if (user.role === 'doctor') {
+ //   router.push('/doctor')
+ //  } else if (user.role === 'patient') {
+ //   router.push('/patient')
+ //  } else {
+ //   router.push('/login')
+ //  }
+ // } catch (error) {
+ //  console.log('error', error)
+ //  // if (axios.isAxiosError(error)) {
+ //  //  alert('Login failed: ' + (error.response?.data?.error || 'Unknown error'))
+ //  // } else {
+ //  //  alert('An unexpected error occurred')
+ //  // }
+ // }
 }
 </script>
 

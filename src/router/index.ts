@@ -4,6 +4,8 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import DoctorLayout from '@/layouts/DoctorLayout.vue'
 import PatientLayout from '@/layouts/PatientLayout.vue'
+import { jwtDecode } from 'jwt-decode'
+// import jwtDecode from 'jwt-decode'
 
 const routes = [
  {
@@ -120,15 +122,24 @@ const router = createRouter({
  routes,
 })
 
+interface MyJwtPayload {
+ user_id: string
+ email: string
+ role: string
+ exp: number
+ iat: number
+}
+
+// const user = JSON.parse(localStorage.getItem('user') || '{}')
 // 🔐 Navigation Guard
 router.beforeEach((to, from, next) => {
  const token = localStorage.getItem('access_token')
- const user = JSON.parse(localStorage.getItem('user') || '{}')
+ const user = token ? jwtDecode<MyJwtPayload>(token) : null
 
  if (to.meta.requiresAuth) {
   if (!token) {
    next('/auth/login')
-  } else if (to.meta.role && to.meta.role !== user.role) {
+  } else if (to.meta.role && to.meta.role !== user?.role) {
    next('/auth/login') // অথবা এক্সেস ডিনাই পেইজ
   } else {
    next()
