@@ -74,6 +74,11 @@ const routes = [
     name: 'patient-list',
     component: () => import('@/pages/admin/adminPatient/PatientList.vue'),
    },
+   {
+    path: 'profile',
+    name: 'profile',
+    component: () => import('@/pages/admin/profile/AdminProfile.vue'),
+   },
   ],
  },
  {

@@ -1,17 +1,46 @@
 <template>
  <div class="admin-navber">
-  <div class="d-flex align-center justify-center">
+  <div class="d-flex align-center">
    <button v-if="!isDesktop" @click="$emit('toggle-drawer')"><v-icon>mdi-menu</v-icon></button>
    <p class="text-h6 ml-5">Admin Panel</p>
   </div>
-  <div class="d-flex align-center justify-center">
-   <v-btn class="mr-4" @click="logout">Logout</v-btn>
+  <div class="d-flex align-center">
+   <!-- <v-btn class="mr-4" @click="logout">Logout</v-btn>
    <v-img
     style="cursor: pointer"
     src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
     width="40"
     class="rounded-circle"
-   />
+   /> -->
+   <v-menu location="bottom end" offset-y>
+    <template #activator="{ props }">
+     <v-img
+      v-bind="props"
+      style="cursor: pointer"
+      src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
+      width="40"
+      class="rounded-circle"
+     />
+    </template>
+    <v-list style="min-width: 150px; background-color: darkslateblue">
+     <v-list-item
+      ><router-link style="text-decoration: none" to="/admin/profile">
+       <v-btn class="text-white" block variant="text" prepend-icon="mdi-logout"> Profile</v-btn>
+      </router-link>
+     </v-list-item>
+     <v-list-item>
+      <v-btn
+       @click="logout"
+       block
+       variant="tonal"
+       prepend-icon="mdi-logout"
+       class="text-white"
+       color="red"
+       >Logout</v-btn
+      >
+     </v-list-item>
+    </v-list>
+   </v-menu>
   </div>
  </div>
 </template>
