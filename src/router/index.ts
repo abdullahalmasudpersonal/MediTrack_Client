@@ -118,6 +118,11 @@ const routes = [
     name: 'patient-dashboard',
     component: () => import('@/pages/patient/dashboard/PatientDashboard.vue'),
    },
+   {
+    path: 'profile',
+    name: 'profile',
+    component: () => import('@/pages/patient/profile/PatientProfile.vue'),
+   },
   ],
  },
 ]
