@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-v-text-v-html-on-component -->
 <template>
  <div class="admin-navber">
   <div class="d-flex align-center">
@@ -5,13 +6,6 @@
    <p class="text-h6 ml-5">Admin Panel</p>
   </div>
   <div class="d-flex align-center">
-   <!-- <v-btn class="mr-4" @click="logout">Logout</v-btn>
-   <v-img
-    style="cursor: pointer"
-    src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
-    width="40"
-    class="rounded-circle"
-   /> -->
    <v-menu location="bottom end" offset-y>
     <template #activator="{ props }">
      <v-img
@@ -22,29 +16,62 @@
       class="rounded-circle"
      />
     </template>
-    <v-list style="min-width: 150px; background-color: darkslateblue">
-     <v-list-item
-      ><router-link style="text-decoration: none" to="/admin/profile">
-       <v-btn class="text-white" block variant="text" prepend-icon="mdi-logout"> Profile</v-btn>
-      </router-link>
-     </v-list-item>
-     <v-list-item>
+    <v-card style="background-color: rgb(47, 51, 73)">
+     <v-list style="background-color: rgb(47, 51, 73)">
+      <v-list-item
+       color="white"
+       style="color: white"
+       prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
+       title="Abdullah Al Masud"
+       subtitle="Admin"
+      >
+      </v-list-item>
+     </v-list>
+     <v-divider color="white" class=""></v-divider>
+
+     <v-list style="background-color: rgb(47, 51, 73); color: whitesmoke; padding: 7px">
+      <v-list-item
+       v-for="(item, i) in items"
+       :key="i"
+       :value="item"
+       class="rounded ps-3"
+       density="compact"
+      >
+       <template v-slot:prepend>
+        <div style="margin-inline-end: 5px">
+         <v-icon :icon="item.icon" style="margin-inline-end: 4px"></v-icon>
+        </div>
+       </template>
+       <v-list-item-title v-text="item.title" />
+      </v-list-item>
       <v-btn
        @click="logout"
        block
        variant="tonal"
        prepend-icon="mdi-logout"
-       class="text-white"
+       class="text-white mt-2"
        color="red"
        >Logout</v-btn
       >
-     </v-list-item>
-    </v-list>
+     </v-list>
+    </v-card>
    </v-menu>
   </div>
  </div>
 </template>
-
+<!--  <v-list-item>
+       <v-btn
+        @click="logout"
+        block
+        variant="tonal"
+        prepend-icon="mdi-logout"
+        class="text-white"
+        color="red"
+        >Logout</v-btn
+       >
+      </v-list-item> -->
+<!--  <router-link style="text-decoration: none" to="/admin/admin-profile"> Profile </router-link> -->
+<!-- <v-btn class="text-white" block variant="text" prepend-icon="mdi-logout"> Profile</v-btn> -->
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -71,6 +98,10 @@ const logout = () => {
  localStorage.removeItem('refresh_token')
  router.push({ name: 'login' })
 }
+const items = [
+ { title: 'Profile', icon: 'mdi-account' },
+ { title: 'Setting', icon: 'mdi-cog' },
+]
 </script>
 
 <style scoped>
@@ -87,3 +118,10 @@ const logout = () => {
  padding: 10px 15px;
 }
 </style>
+<!-- <v-btn class="mr-4" @click="logout">Logout</v-btn>
+   <v-img
+    style="cursor: pointer"
+    src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
+    width="40"
+    class="rounded-circle"
+   /> -->
