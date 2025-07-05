@@ -75,8 +75,8 @@ const routes = [
     component: () => import('@/pages/admin/adminPatient/PatientList.vue'),
    },
    {
-    path: 'profile',
-    name: 'profile',
+    path: 'admin-profile',
+    name: 'admin-profile',
     component: () => import('@/pages/admin/profile/AdminProfile.vue'),
    },
   ],
@@ -106,6 +106,11 @@ const routes = [
     name: 'doctor-prescription',
     component: () => import('@/pages/doctor/doctorPrescription/DoctorPrescription.vue'),
    },
+   {
+    path: 'doctor-profile',
+    name: 'doctor-profile',
+    component: () => import('@/pages/doctor/doctorPrescription/DoctorPrescription.vue'),
+   },
   ],
  },
  {
@@ -119,8 +124,8 @@ const routes = [
     component: () => import('@/pages/patient/dashboard/PatientDashboard.vue'),
    },
    {
-    path: 'profile',
-    name: 'profile',
+    path: 'patient-profile',
+    name: 'patient-profile',
     component: () => import('@/pages/patient/profile/PatientProfile.vue'),
    },
   ],
