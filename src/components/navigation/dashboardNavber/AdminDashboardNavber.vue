@@ -36,6 +36,7 @@
        :value="item"
        class="rounded ps-3"
        density="compact"
+       :to="item.to"
       >
        <template v-slot:prepend>
         <div style="margin-inline-end: 5px">
@@ -59,19 +60,7 @@
   </div>
  </div>
 </template>
-<!--  <v-list-item>
-       <v-btn
-        @click="logout"
-        block
-        variant="tonal"
-        prepend-icon="mdi-logout"
-        class="text-white"
-        color="red"
-        >Logout</v-btn
-       >
-      </v-list-item> -->
-<!--  <router-link style="text-decoration: none" to="/admin/admin-profile"> Profile </router-link> -->
-<!-- <v-btn class="text-white" block variant="text" prepend-icon="mdi-logout"> Profile</v-btn> -->
+
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -99,7 +88,7 @@ const logout = () => {
  router.push({ name: 'login' })
 }
 const items = [
- { title: 'Profile', icon: 'mdi-account' },
+ { title: 'Profile', icon: 'mdi-account', to: '/admin/admin-profile' },
  { title: 'Setting', icon: 'mdi-cog' },
 ]
 </script>
