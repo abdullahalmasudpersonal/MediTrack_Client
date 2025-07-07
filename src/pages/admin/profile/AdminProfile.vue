@@ -132,7 +132,7 @@
 .admin-profile-top-part-div2 img {
  width: 120px;
  height: 120px;
- border: 5px solid rgb(53, 53, 102);
+ border: 5px solid #512da8;
  border-radius: 5px;
  margin-top: -40px;
 }

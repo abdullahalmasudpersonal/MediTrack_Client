@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const baseApi = axios.create({
  baseURL: 'https://meditrack-backend-tdg6.onrender.com/api/', // আপনার Django বা Node.js API URL
+ // withCredentials: true,
  timeout: 10000,
  headers: {
   'Content-Type': 'application/json',
@@ -12,7 +13,7 @@ const baseApi = axios.create({
 baseApi.interceptors.request.use((config) => {
  const token = localStorage.getItem('access_token')
  if (token) {
-  config.headers.Authorization = `Bearer ${token}`
+  config.headers.Authorization = `${token}`
  }
  return config
 })

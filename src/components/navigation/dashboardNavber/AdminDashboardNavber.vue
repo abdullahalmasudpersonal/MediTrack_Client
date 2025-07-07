@@ -22,7 +22,7 @@
        color="white"
        style="color: white"
        prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
-       title="Abdullah Al Masud"
+       :title="{ name }"
        subtitle="Admin"
       >
       </v-list-item>
@@ -62,11 +62,13 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/pinia/stores/userStore'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
+const userStore = useUserStore()
 
-// screen width tracking
+// screen width tracking for sideber responsive btn
 const windowWidth = ref(window.innerWidth)
 const isDesktop = computed(() => windowWidth.value > 1000)
 function updateWidth() {
@@ -87,10 +89,16 @@ const logout = () => {
  localStorage.removeItem('refresh_token')
  router.push({ name: 'login' })
 }
+// ///////////// profile box data /////////////
 const items = [
  { title: 'Profile', icon: 'mdi-account', to: '/admin/admin-profile' },
  { title: 'Setting', icon: 'mdi-cog' },
 ]
+
+/////////////// load profile data //////////
+onMounted(async () => {
+ const { name, user } = await userStore.getMyProfileStore()
+})
 </script>
 
 <style scoped>
@@ -98,7 +106,8 @@ const items = [
  position: sticky;
  top: 20px;
  height: 60px;
- background-color: #59595e;
+ background: linear-gradient(-45deg, #673ab7, #512da8, #654799, #311b92);
+ z-index: 10;
  border-radius: 5px;
  margin-bottom: 30px;
  display: flex;
