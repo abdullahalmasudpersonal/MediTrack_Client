@@ -1,10 +1,26 @@
 import { defineStore } from 'pinia'
 import { userApi } from '../features/userApi/UserApi'
 
+interface User {
+ userId: string
+ email: string
+ role: string
+ status: string
+}
+interface MyProfile {
+ name: string
+ phone_number: string
+ address: string
+ user: User
+}
+
 export const useUserStore = defineStore('user', {
- state: () => ({
-  users: [] as unknown[],
-  userProfile: null as unknown,
+ state: (): {
+  myProfile: MyProfile | null
+  loading: boolean
+  error: string | null
+ } => ({
+  myProfile: null,
   loading: false,
   error: null as string | null,
  }),
@@ -14,7 +30,7 @@ export const useUserStore = defineStore('user', {
    this.loading = true
    try {
     const data = await userApi.getMyProfile()
-    this.userProfile = data
+    this.myProfile = data
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {

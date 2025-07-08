@@ -5,7 +5,7 @@
    <div class="admin-profile-top-part-div2">
     <img src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png" />
     <div>
-     <p class="admin-name">Abdullah Al Masud</p>
+     <p class="admin-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="adminRoleJoinDate">
       <div style="display: flex; gap: 5px; align-items: center">
        <v-icon size="20">mdi-account-cog</v-icon>
@@ -40,10 +40,10 @@
   <div class="admin-profile-data">
    <h3 style="margin-bottom: 5px">About</h3>
    <v-row>
-    <v-col cols="12" sm="12">
+    <v-col cols="12" sm="6">
      <v-text-field
       label="Name"
-      model-value="Abdullah Al Masud"
+      :model-value="myProfile?.name"
       variant="underlined"
       readonly
      ></v-text-field>
@@ -51,7 +51,7 @@
     <v-col cols="12" sm="6">
      <v-text-field
       label="Email"
-      model-value="abdullah@gmail.com"
+      :model-value="myProfile?.user?.email"
       variant="underlined"
       readonly
      ></v-text-field>
@@ -59,26 +59,23 @@
     <v-col cols="12" sm="6">
      <v-text-field
       label="UserId"
-      model-value="A-MT000001"
+      :model-value="myProfile?.user?.userId"
       variant="underlined"
       readonly
      ></v-text-field>
     </v-col>
     <v-col cols="12" sm="6">
      <v-text-field
-      label="UserId"
-      model-value="A-MT000001"
+      label="Status"
+      :model-value="myProfile?.user?.status"
       variant="underlined"
       readonly
      ></v-text-field>
-    </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field label="Status" model-value="Active" variant="underlined" readonly></v-text-field>
     </v-col>
     <v-col cols="12" sm="6">
      <v-text-field
       label="Phone"
-      model-value="01587498652"
+      :model-value="myProfile?.phone_number"
       variant="underlined"
       readonly
      ></v-text-field>
@@ -86,7 +83,7 @@
     <v-col cols="12" sm="6">
      <v-text-field
       label="Address"
-      model-value="Jatrabari, Dhaka - 1204"
+      :model-value="myProfile?.address"
       variant="underlined"
       readonly
      ></v-text-field>
@@ -97,7 +94,17 @@
  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserStore } from '@/pinia/stores/userStore'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+
+const userStore = useUserStore()
+const { myProfile } = storeToRefs(userStore)
+onMounted(async () => {
+ await userStore.getMyProfileStore()
+})
+</script>
 
 <style scoped>
 .admin-profile-top-part-div1 {

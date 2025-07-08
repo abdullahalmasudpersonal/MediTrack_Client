@@ -22,8 +22,8 @@
        color="white"
        style="color: white"
        prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
-       :title="{ name }"
-       subtitle="Admin"
+       :title="myProfile?.name || 'Loading...'"
+       :subtitle="myProfile?.user?.role || ''"
       >
       </v-list-item>
      </v-list>
@@ -63,10 +63,10 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/pinia/stores/userStore'
+import { storeToRefs } from 'pinia'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const userStore = useUserStore()
 
 // screen width tracking for sideber responsive btn
 const windowWidth = ref(window.innerWidth)
@@ -92,13 +92,16 @@ const logout = () => {
 // ///////////// profile box data /////////////
 const items = [
  { title: 'Profile', icon: 'mdi-account', to: '/admin/admin-profile' },
- { title: 'Setting', icon: 'mdi-cog' },
+ { title: 'Setting', icon: 'mdi-cog', to: '' },
 ]
 
 /////////////// load profile data //////////
-onMounted(async () => {
- const { name, user } = await userStore.getMyProfileStore()
-})
+const userStore = useUserStore()
+const { myProfile } = storeToRefs(userStore)
+// onMounted(async () => {
+//  // const { name: profileName, user } = await userStore.getMyProfileStore()
+//  // name.value = profileName
+// })
 </script>
 
 <style scoped>
