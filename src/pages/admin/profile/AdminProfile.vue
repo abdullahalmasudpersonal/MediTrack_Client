@@ -37,6 +37,7 @@
     sapiente cumque a! Consequuntur, ratione velit! Ut, quibusdam.
    </p>
   </div>
+  <!--  -->
   <div class="admin-profile-data">
    <h3 style="margin-bottom: 5px">About</h3>
    <v-row>
@@ -90,7 +91,6 @@
     </v-col>
    </v-row>
   </div>
-  <!--  -->
  </div>
 </template>
 

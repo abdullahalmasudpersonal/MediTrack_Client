@@ -38,7 +38,7 @@ const menuItems = [
  {
   title: 'Dashboard',
   icon: 'mdi-home',
-  to: '/admin',
+  to: '/patient',
  },
  {
   title: 'Doctor',
@@ -49,7 +49,7 @@ const menuItems = [
   ],
  },
  {
-  title: 'Patient',
+  title: 'Appointment',
   icon: 'mdi-account-injury-outline',
   to: '/admin/patient-list',
  },
