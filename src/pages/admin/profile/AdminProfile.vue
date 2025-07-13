@@ -1,5 +1,5 @@
 <template>
- <div class="admin-profile">
+ <div>
   <div style="margin-bottom: 30px">
    <div class="admin-profile-top-part-div1"></div>
    <div class="admin-profile-top-part-div2">

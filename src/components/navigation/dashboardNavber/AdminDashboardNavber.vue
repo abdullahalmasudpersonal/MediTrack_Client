@@ -98,10 +98,9 @@ const items = [
 /////////////// load profile data //////////
 const userStore = useUserStore()
 const { myProfile } = storeToRefs(userStore)
-// onMounted(async () => {
-//  // const { name: profileName, user } = await userStore.getMyProfileStore()
-//  // name.value = profileName
-// })
+onMounted(async () => {
+ await userStore.getMyProfileStore()
+})
 </script>
 
 <style scoped>

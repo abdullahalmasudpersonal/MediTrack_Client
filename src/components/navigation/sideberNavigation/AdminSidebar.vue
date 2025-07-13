@@ -77,11 +77,4 @@ const menuItems = [
 ]
 </script>
 
-<style scoped>
-/* .v-navigation-drawer {
- height: 100vh;
- position: fixed;
- top: 0;
- left: 0;
-} */
-</style>
+<style scoped></style>

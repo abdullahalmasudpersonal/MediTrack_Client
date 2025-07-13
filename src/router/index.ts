@@ -109,7 +109,7 @@ const routes = [
    {
     path: 'doctor-profile',
     name: 'doctor-profile',
-    component: () => import('@/pages/doctor/doctorPrescription/DoctorPrescription.vue'),
+    component: () => import('@/pages/doctor/profile/DoctorProfile.vue'),
    },
   ],
  },
