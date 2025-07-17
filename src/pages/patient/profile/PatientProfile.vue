@@ -4,7 +4,7 @@
   <div style="margin-bottom: 30px">
    <div class="patient-profile-top-part-div1"></div>
    <div class="patient-profile-top-part-div2">
-    <img src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png" />
+    <img :src="myProfile?.photo || default_profile_img" />
     <div>
      <p class="patient-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="patientRoleJoinDate">
@@ -100,6 +100,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
+import default_profile_img from '@/assets/image/profile/default-user_withBG.png'
 import { onMounted } from 'vue'
 
 const userStore = useUserStore()

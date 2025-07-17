@@ -3,7 +3,7 @@
   <div style="margin-bottom: 30px">
    <div class="admin-profile-top-part-div1"></div>
    <div class="admin-profile-top-part-div2">
-    <img src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png" />
+    <img :src="myProfile?.photo || default_profile_img" />
     <div>
      <p class="admin-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="adminRoleJoinDate">
@@ -98,12 +98,14 @@
 import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
+import default_profile_img from '@/assets/image/profile/default-user_withBG.png'
 
 const userStore = useUserStore()
 const { myProfile } = storeToRefs(userStore)
 onMounted(async () => {
  await userStore.getMyProfileStore()
 })
+console.log(myProfile, 'myProfile')
 </script>
 
 <style scoped>

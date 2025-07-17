@@ -11,9 +11,9 @@
      <v-img
       v-bind="props"
       style="cursor: pointer"
-      src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
+      :src="myProfile?.photo || default_profile_img"
       width="40"
-      class="rounded-circle"
+      class="rounded-circle border-sm"
      />
     </template>
     <v-card style="background-color: rgb(47, 51, 73)">
@@ -21,7 +21,7 @@
       <v-list-item
        color="white"
        style="color: white"
-       prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
+       :prepend-avatar="myProfile?.photo || default_profile_img"
        :title="myProfile?.name || 'Loading...'"
        :subtitle="myProfile?.user?.role || ''"
       >
@@ -64,6 +64,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
+import default_profile_img from '@/assets/image/profile/default-user.png'
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()

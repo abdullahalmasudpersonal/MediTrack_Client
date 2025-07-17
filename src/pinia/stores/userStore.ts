@@ -11,6 +11,7 @@ interface MyProfile {
  name: string
  phone_number: string
  address: string
+ photo: string
  user: User
 }
 

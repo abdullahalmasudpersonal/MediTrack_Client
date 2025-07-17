@@ -3,15 +3,13 @@
   <div style="margin-bottom: 30px">
    <div class="doctor-profile-top-part-div1"></div>
    <div class="doctor-profile-top-part-div2">
-    <img src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png" />
+    <img :src="myProfile?.photo || default_profile_img" />
     <div>
      <p class="doctor-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="doctorRoleJoinDate">
       <div style="display: flex; gap: 5px; align-items: center">
        <v-icon size="20">mdi-account-cog</v-icon>
-       <small style="font-size: 16px">
-        {{ myProfile?.user?.role === 'doctor' ? 'Doctor' : '' }}</small
-       >
+       <small style="font-size: 16px"> Doctor</small>
       </div>
       <p>
        <v-icon size="20">mdi-calendar</v-icon>
@@ -100,6 +98,7 @@
 import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
+import default_profile_img from '@/assets/image/profile/default-user_withBG.png'
 
 const userStore = useUserStore()
 const { myProfile } = storeToRefs(userStore)
