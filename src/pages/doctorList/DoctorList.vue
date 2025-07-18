@@ -15,7 +15,7 @@
         {{ doctor?.specialization.charAt(0).toUpperCase() + doctor?.specialization.slice(1) }}
        </p>
        <h5 class="mt-1 font-weight-medium">MCPS, FCPS, FRCP(Glasg), FACC(USA)</h5>
-       <v-btn block class="mt-3">View Doctor Profile</v-btn>
+       <v-btn block class="mt-3" @click="goToDoctorProfile(doctor.id)">View Doctor Profile</v-btn>
       </div>
      </div>
     </v-col>
@@ -28,7 +28,12 @@
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
+function goToDoctorProfile(id: string) {
+ router.push({ name: 'doctorDetails', params: { id } })
+}
 const doctorStore = useDoctorStore()
 const { allDoctor } = storeToRefs(doctorStore)
 onMounted(async () => {
@@ -38,13 +43,13 @@ onMounted(async () => {
 
 <style scoped>
 .doctor-div {
- background-color: rgb(233, 231, 229);
+ background-color: rgb(247, 247, 247);
  border-radius: 5px;
  border: 1px solid rgb(235, 235, 235);
 }
 
 .doctor-card {
- background-color: rgb(229, 233, 232);
+ background-color: rgb(247, 247, 247);
  min-height: 80px;
  width: 100%;
  padding: 10px;
