@@ -105,7 +105,6 @@ const { myProfile } = storeToRefs(userStore)
 onMounted(async () => {
  await userStore.getMyProfileStore()
 })
-console.log(myProfile, 'myProfile')
 </script>
 
 <style scoped>
