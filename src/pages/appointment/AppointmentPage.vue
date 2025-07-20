@@ -1,6 +1,6 @@
 <template>
  <v-container>
-  <div>Doctor details</div>
+  <div>Appointment page</div>
  </v-container>
 </template>
 

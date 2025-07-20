@@ -53,11 +53,12 @@ export const useDoctorStore = defineStore('doctor', {
    try {
     const data = await doctorApi.getAllDoctor()
     this.allDoctor = data
-    console.log(data, 'doctordata')
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
     this.error = err.response?.data?.message || 'Failed to load all doctor'
+   } finally {
+    this.loading = false
    }
   },
  },

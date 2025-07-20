@@ -24,6 +24,11 @@ const routes = [
     component: () => import('@/pages/doctorList/SingleDoctor.vue'),
    },
    {
+    path: 'appointment/:id',
+    name: 'appointment',
+    component: () => import('@/pages/appointment/AppointmentPage.vue'),
+   },
+   {
     path: 'services',
     name: 'services',
     component: () => import('@/pages/ourServices/ServicesPage.vue'),
