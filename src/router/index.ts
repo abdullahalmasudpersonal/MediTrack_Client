@@ -138,6 +138,11 @@ const routes = [
     name: 'patient-profile',
     component: () => import('@/pages/patient/profile/PatientProfile.vue'),
    },
+   {
+    path: 'patient-payment',
+    name: 'patient-payment',
+    component: () => import('@/pages/payment/PaymentPage.vue'),
+   },
   ],
  },
 ]
