@@ -2,7 +2,35 @@
  <v-container>
   <div style="margin: 30px auto 30px auto">
    <div>
-    <!-- search ber/filter -->
+    <v-row>
+     <v-col cols="12" sm="6">
+      <v-select
+       v-model="filters.specialization"
+       clearable
+       label="Select"
+       :items="[
+        'cardiology',
+        'dermatology',
+        'neurology',
+        'pediatrics',
+        'orthopedics',
+        'gynecology',
+        'psychiatry',
+        'general',
+        'surgery',
+        'radiology',
+        'ent',
+        'urology',
+        'oncology',
+        'ophthalmology',
+        'anesthesiology',
+       ]"
+      ></v-select>
+     </v-col>
+     <v-col cols="12" sm="6">
+      <v-text-field v-model="filters.name" label="Search Doctor Name"></v-text-field>
+     </v-col>
+    </v-row>
    </div>
    <v-row>
     <v-col cols="12" sm="6" md="4" lg="3" v-for="n in 4" :key="n">
@@ -23,10 +51,10 @@
         {{ doctor?.specialization.charAt(0).toUpperCase() + doctor?.specialization.slice(1) }}
        </p>
        <h5 class="mt-1 font-weight-medium">MCPS, FCPS, FRCP(Glasg), FACC(USA)</h5>
-       <v-btn color="#4527A0" block class="mt-3" @click="goToAppointmentPage(doctor.id)"
+       <v-btn color="#4527A0" block class="mt-3" @click="goToAppointmentPage(doctor.user.id)"
         >Get Appointment</v-btn
        >
-       <v-btn color="indigo-darken-3" block class="mt-3" @click="goToDoctorProfile(doctor.id)"
+       <v-btn color="indigo-darken-3" block class="mt-3" @click="goToDoctorProfile(doctor.user.id)"
         >View Doctor Profile</v-btn
        >
       </div>
@@ -40,8 +68,9 @@
 <script setup lang="ts">
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+
 const router = useRouter()
 
 function goToDoctorProfile(id: string) {
@@ -50,11 +79,20 @@ function goToDoctorProfile(id: string) {
 function goToAppointmentPage(id: string) {
  router.push({ name: 'appointment', params: { id } })
 }
+
+const filters = ref({ specialization: '', name: '' })
 const doctorStore = useDoctorStore()
 const { allDoctor, loading } = storeToRefs(doctorStore)
 onMounted(async () => {
- await doctorStore.getAllDoctorStore()
+ await doctorStore.getAllDoctorStore(filters.value)
 })
+watch(
+ filters,
+ async () => {
+  await doctorStore.getAllDoctorStore(filters.value)
+ },
+ { deep: true },
+)
 </script>
 
 <style scoped>

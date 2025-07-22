@@ -327,11 +327,14 @@ const submitForm = () => {
 </template>
 
 <script setup lang="ts">
-// import type { Ref } from 'vue'
 import { useAppointmentStore } from '@/pinia/stores/appointmentStore'
+import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { storeToRefs } from 'pinia'
+import { watch } from 'vue'
 import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const genderOptions = [
  { title: 'Male', value: 'male' },
  { title: 'Female', value: 'female' },
@@ -385,6 +388,17 @@ const form = ref({
  appointment_date: '',
  appointment_time: '',
 })
+
+//////////////////////
+const doctorStore = useDoctorStore()
+const { singleDoctor, loading } = storeToRefs(doctorStore)
+
+onMounted(async () => {
+ const doctorId = route.params.id as string
+ await doctorStore.getSingleDoctorStore(doctorId)
+})
+
+//////////////////////////
 const appointmentStore = useAppointmentStore()
 // const { appointment, loading, error } = storeToRefs(appointmentStore)
 

@@ -39,24 +39,39 @@ interface DoctorProfile {
 export const useDoctorStore = defineStore('doctor', {
  state: (): {
   allDoctor: DoctorProfile[] | null
+  singleDoctor: DoctorProfile | null
   loading: boolean
   error: string | null
  } => ({
   allDoctor: [],
+  singleDoctor: null,
   loading: false,
   error: null as string | null,
  }),
 
  actions: {
-  async getAllDoctorStore() {
+  async getAllDoctorStore(filters?: { specialization?: string; name?: string }) {
    this.loading = true
    try {
-    const data = await doctorApi.getAllDoctor()
+    const data = await doctorApi.getAllDoctor(filters)
     this.allDoctor = data
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
     this.error = err.response?.data?.message || 'Failed to load all doctor'
+   } finally {
+    this.loading = false
+   }
+  },
+  async getSingleDoctorStore(id: string) {
+   this.loading = true
+   try {
+    const data = await doctorApi.getSingleDoctor(id)
+    this.singleDoctor = data
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    this.error = err.response?.data?.message || 'Failed to load doctor profile'
    } finally {
     this.loading = false
    }
