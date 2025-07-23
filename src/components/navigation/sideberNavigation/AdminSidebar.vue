@@ -1,16 +1,3 @@
-<!-- <template>
- <aside class="sidebar">
-  <nav>
-   <ul>
-    <li><router-link to="/">Home</router-link></li>
-    <li><router-link to="/admin">Dashboard</router-link></li>
-    <li><router-link to="/admin/users">Manage Users</router-link></li>
-    <li @click="logout">Logout</li>
-   </ul>
-  </nav>
- </aside>
-</template> -->
-
 <template>
  <!-- <template v-slot:prepend> -->
  <router-link to="/" class="text-decoration-none">

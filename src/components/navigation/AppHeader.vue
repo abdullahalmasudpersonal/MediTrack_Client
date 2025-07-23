@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
  <div class="header">
   <v-container>
    <div class="headerDiv">
@@ -75,6 +75,54 @@ const dashboardPath = computed(() => {
 .headerMenu ul li {
  padding: 5px 15px;
  font-weight: 600;
- /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+</style> -->
+<template>
+ <v-app-bar app color="primary" dark>
+  <v-app-bar-nav-icon @click="drawer = !drawer" class="d-md-none" />
+  <v-toolbar-title class="font-weight-bold">MyApp</v-toolbar-title>
+
+  <v-spacer />
+
+  <!-- Desktop Links -->
+  <div class="d-none d-md-flex">
+   <v-btn text to="/">Homess</v-btn>
+   <v-btn text to="/about">About</v-btn>
+   <v-btn text to="/contact">Contact</v-btn>
+  </div>
+ </v-app-bar>
+
+ <!-- Drawer for Mobile -->
+ <v-navigation-drawer v-model="drawer" app temporary class="d-md-none">
+  <v-list>
+   <v-list-item to="/">
+    <v-list-item-title>Home</v-list-item-title>
+   </v-list-item>
+   <v-list-item to="/about">
+    <v-list-item-title>About</v-list-item-title>
+   </v-list-item>
+   <v-list-item to="/contact">
+    <v-list-item-title>Contact</v-list-item-title>
+   </v-list-item>
+  </v-list>
+ </v-navigation-drawer>
+
+ <!-- Page Content -->
+ <v-main>
+  <v-container class="mt-10">
+   <router-view />
+  </v-container>
+ </v-main>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const drawer = ref(false)
+</script>
+
+<style scoped>
+.v-btn {
+ text-transform: none;
 }
 </style>
