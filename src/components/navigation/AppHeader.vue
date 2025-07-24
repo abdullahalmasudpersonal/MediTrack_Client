@@ -3,7 +3,7 @@
   <v-container class="d-flex align-center justify-space-between">
    <router-link to="/" style="text-decoration: none">
     <div class="d-flex align-center">
-     <v-img src="/src/assets/image/logo/meditrack.png" width="50" />
+     <v-img :src="logo" width="47" />
      <p class="logoname">&nbsp;MediTrack</p>
     </div>
    </router-link>
@@ -34,11 +34,6 @@
    </div>
    <div class="headerMenu d-none d-md-flex">
     <ul>
-     <!-- <li>
-      <router-link exact-active-class="active-link" class="navitem" to="/doctor-list"
-       >Appointment</router-link
-      >
-     </li> -->
      <li>
       <router-link
        exact-active-class="active-link"
@@ -87,6 +82,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ref } from 'vue'
+import logo from '@/assets/image/logo/meditrack.png'
 
 const drawer = ref(false)
 const token = localStorage.getItem('access_token')

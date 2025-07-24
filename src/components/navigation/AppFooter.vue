@@ -1,38 +1,55 @@
 <template>
  <div class="footer">
-  <v-container class="footerContainer">
-   <div class="footerDiv">
-    <div style="display: flex; align-items: center">
-     <img src="../../assets/image/logo/meditrack.png" class="logo" alt="logo" />
-     <p
-      style="
-       font-size: 28px;
-       font-weight: 700;
-       /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-       color: #dadada;
-      "
-     >
-      &nbsp;MediTrack
+  <v-container>
+   <v-row class="footerDiv">
+    <v-col cols="12" sm="6" md="3" class="footerChildDiv">
+     <div style="display: flex; align-items: center">
+      <img src="../../assets/image/logo/meditrack.png" class="logo" alt="logo" />
+      <p style="font-size: 26px; font-weight: 700; color: #dadada">&nbsp;MediTrack</p>
+     </div>
+     <p style="margin-top: 30px">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore aliqua.
      </p>
-    </div>
-    <p style="margin-top: 30px">
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-     labore et dolore aliqua.
-    </p>
-    <div>
-     <v-icon class="footerSocialIon">mdi-facebook</v-icon>
-     <v-icon class="footerSocialIon">mdi-twitter</v-icon>
-     <v-icon class="footerSocialIon">mdi-linkedin</v-icon>
-     <v-icon class="footerSocialIon">mdi-instagram</v-icon>
-    </div>
-   </div>
-   <div class="footerDiv"><h2>Our Services</h2></div>
-   <div class="footerDiv">
-    <h2>Useful Links</h2>
-   </div>
-   <div class="footerDiv">
-    <h2>Contact</h2>
-   </div>
+     <div>
+      <v-icon class="footerSocialIon">mdi-facebook</v-icon>
+      <v-icon class="footerSocialIon">mdi-twitter</v-icon>
+      <v-icon class="footerSocialIon">mdi-linkedin</v-icon>
+      <v-icon class="footerSocialIon">mdi-instagram</v-icon>
+     </div>
+    </v-col>
+    <v-col cols="12" sm="6" md="3" class="footerChildDiv">
+     <h2>Our Services</h2>
+     <ul class="ourServices">
+      <li>Cosmetic Dentistry</li>
+      <li>General Dentistry</li>
+      <li>Certified Dentist</li>
+      <li>New Technology</li>
+      <li>Accept Insurance</li>
+     </ul>
+    </v-col>
+    <v-col cols="12" sm="6" md="3">
+     <h2>Useful Links</h2>
+     <ul class="UsefulLinks">
+      <li>Contact Us</li>
+      <li>Solutions</li>
+      <li>Privacy Policy</li>
+      <li>Terms of Use</li>
+     </ul>
+    </v-col>
+    <v-col cols="12" sm="6" md="3">
+     <h2>Contact Us</h2>
+     <ul class="contactUs">
+      <li>
+       <v-icon class="">mdi-phone</v-icon>
+       +123(456)123
+      </li>
+      <li><v-icon class="">mdi-email</v-icon> abdullah@gmail.com</li>
+      <li><v-icon class="">mdi-map-marker</v-icon> 50 NW-2nd Ave, Miami USA</li>
+      <li><v-icon class="">mdi-clock-time-eight</v-icon> Every day 3.00 - 10.00 PM</li>
+     </ul>
+    </v-col>
+   </v-row>
   </v-container>
  </div>
 
@@ -46,18 +63,15 @@
 <style scoped>
 .footer {
  color: white;
- background: linear-gradient(to right, #091222 10%, #0d162e 70%, #03112c);
-}
-.footerContainer {
- display: grid;
- grid-template-columns: 25% 25% 25% 25%;
- gap: 10px;
+ background: linear-gradient(to right, #021e4e 10%, #0e1d46 70%, #021e47);
 }
 .footerDiv {
- min-height: 350px;
- font-family: 'Times New Roman', Times, serif;
- font-size: 17px;
- font-weight: bold;
+ margin-top: 40px;
+ margin-bottom: 40px;
+}
+.footerChildDiv {
+ /* min-height: 370px; */
+ /* border: 1px solid gray; */
 }
 .logo {
  width: 50px;
@@ -69,32 +83,76 @@
  height: 30px;
  width: 30px;
  font-size: 22px;
- background: #0013a5;
+ background: #050c41;
  color: rgb(255, 255, 255);
  border-radius: 50%;
- padding: 20px;
+ padding: 23px;
  margin-top: 30px;
  margin-right: 8px;
  cursor: pointer;
 }
+.footerSocialIon:hover {
+ background: #02407e;
+ color: white;
+ transition: 0.3s ease;
+}
+/* ///////////// Useful Links ///////////////// */
+.UsefulLinks {
+ list-style: none; /* bullet বাদ */
+ padding: 0;
+ margin-top: 16px;
+}
+.UsefulLinks li {
+ padding: 6px 0;
+ color: #f1f1f1;
+ cursor: pointer;
+ font-size: 15px;
+ transition: color 0.3s ease;
+}
+.UsefulLinks li:hover {
+ color: #ffffff;
+ text-decoration: underline;
+}
+/* ///////////// ourServices ///////////////// */
+.ourServices {
+ list-style: none; /* bullet বাদ */
+ padding: 0;
+ margin-top: 16px;
+}
+.ourServices li {
+ padding: 6px 0;
+ color: #f1f1f1;
+ cursor: pointer;
+ font-size: 15px;
+ transition: color 0.3s ease;
+}
+.ourServices li:hover {
+ color: #ffffff;
+ text-decoration: underline;
+}
+/* ///////////// contactUs ///////////////// */
+.contactUs {
+ list-style: none; /* bullet বাদ */
+ padding: 0;
+ margin-top: 16px;
+}
+.contactUs li {
+ padding: 6px 0;
+ color: #f1f1f1;
+ cursor: pointer;
+ font-size: 15px;
+ transition: color 0.3s ease;
+}
+.contactUs li:hover {
+ color: #ffffff;
+}
+/* ////////////////////////// */
 .footerButtomDiv {
  height: 70px;
- background: linear-gradient(to right, rgb(6, 10, 19) 60%, rgb(3, 15, 31));
+ background: linear-gradient(to right, rgb(9, 19, 44) 60%, rgb(3, 15, 31));
  color: white;
  display: flex;
  justify-content: center;
  align-items: center;
-}
-@media (max-width: 850px) {
- .footerContainer {
-  display: grid;
-  grid-template-columns: 50% 50%;
- }
-}
-@media (max-width: 500px) {
- .footerContainer {
-  display: grid;
-  grid-template-columns: auto;
- }
 }
 </style>
