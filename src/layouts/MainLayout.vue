@@ -1,14 +1,14 @@
-<script setup lang="ts">
-import AppHeader from '../components/navigation/AppHeader.vue'
-import AppFooter from '../components/navigation/AppFooter.vue'
-</script>
-
 <template>
- <AppHeader />
- <router-view> </router-view>
- <AppFooter />
+ <v-app>
+  <AppHeader />
+  <v-main> <router-view /></v-main>
+  <AppFooter />
+ </v-app>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppFooter from '@/components/navigation/AppFooter.vue'
+import AppHeader from '@/components/navigation/AppHeader.vue'
+</script>
 
 <style scoped></style>
