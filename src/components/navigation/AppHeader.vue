@@ -114,7 +114,8 @@ const dashboardPath = computed(() => {
 .headerMenu ul li {
  padding: 5px 13px;
  font-weight: 600;
- font-size: 18px;
+ font-size: 16px;
+ font-family: 'Times New Roman', Times, serif;
 }
 .navitem {
  color: rgb(0, 0, 0);
