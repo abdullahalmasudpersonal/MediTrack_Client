@@ -1,61 +1,60 @@
 <template>
  <div class="">
-  <v-container style="max-width: 1400px; margin: 0 auto">
-   <h5 class="ourSecialistTag"># Meet Our Specialists</h5>
-   <h2 class="ourSpecialistHeading">
-    Connect with our expert specialists<br />
-    dedicated to your care
-   </h2>
-   <v-row>
-    <v-col cols="12" sm="6" md="3" lg="3">
-     <div class="doctorimagediv">
-      <img src="@/assets/image/ourSpecialist/team1-1.jpg" alt="doctor" class="responsive-img" />
-      <div class="doctorLindedinIconDiv">
-       <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
-      </div>
+  <h5 class="ourSecialistTag"># Meet Our Specialists</h5>
+  <h2 class="ourSpecialistHeading">
+   Connect with our expert specialists<br />
+   dedicated to your care
+  </h2>
+  <v-row>
+   <v-col cols="12" sm="6" md="3" lg="3">
+    <div class="doctorimagediv">
+     <img src="@/assets/image/ourSpecialist/team1-1.jpg" alt="doctor" class="responsive-img" />
+     <div class="doctorLindedinIconDiv">
+      <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
      </div>
-     <h3 style="text-align: center; margin-top: 40px">Dr. Addison Patel</h3>
-     <h5 style="text-align: center">Chief Executive Officer</h5>
-    </v-col>
+    </div>
+    <h3 style="text-align: center; margin-top: 40px">Dr. Addison Patel</h3>
+    <h5 style="text-align: center">Chief Executive Officer</h5>
+   </v-col>
 
-    <v-col cols="12" sm="6" md="3" lg="3">
-     <div class="doctorimagediv">
-      <img src="@/assets/image/ourSpecialist/team2-1.jpg" alt="doctor" class="responsive-img" />
-      <div class="doctorLindedinIconDiv">
-       <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
-      </div>
+   <v-col cols="12" sm="6" md="3" lg="3">
+    <div class="doctorimagediv">
+     <img src="@/assets/image/ourSpecialist/team2-1.jpg" alt="doctor" class="responsive-img" />
+     <div class="doctorLindedinIconDiv">
+      <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
      </div>
-     <h3 style="text-align: center; margin-top: 40px">Dr. Emily Carter</h3>
-     <h5 style="text-align: center">Chief Medical Officer</h5>
-    </v-col>
+    </div>
+    <h3 style="text-align: center; margin-top: 40px">Dr. Emily Carter</h3>
+    <h5 style="text-align: center">Chief Medical Officer</h5>
+   </v-col>
 
-    <v-col cols="12" sm="6" md="3" lg="3">
-     <div class="doctorimagediv">
-      <img src="@/assets/image/ourSpecialist/team3-1.jpg" alt="doctor" class="responsive-img" />
-      <div class="doctorLindedinIconDiv">
-       <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
-      </div>
+   <v-col cols="12" sm="6" md="3" lg="3">
+    <div class="doctorimagediv">
+     <img src="@/assets/image/ourSpecialist/team3-1.jpg" alt="doctor" class="responsive-img" />
+     <div class="doctorLindedinIconDiv">
+      <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
      </div>
-     <h3 style="text-align: center; margin-top: 40px">Dr. Michael Thompson</h3>
-     <h5 style="text-align: center">Chief Operating Officer</h5>
-    </v-col>
+    </div>
+    <h3 style="text-align: center; margin-top: 40px">Dr. Michael Thompson</h3>
+    <h5 style="text-align: center">Chief Operating Officer</h5>
+   </v-col>
 
-    <v-col cols="12" sm="6" md="3" lg="3">
-     <div class="doctorimagediv">
-      <img src="@/assets/image/ourSpecialist/team4-1.jpg" alt="doctor" class="responsive-img" />
-      <div class="doctorLindedinIconDiv">
-       <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
-      </div>
+   <v-col cols="12" sm="6" md="3" lg="3">
+    <div class="doctorimagediv">
+     <img src="@/assets/image/ourSpecialist/team4-1.jpg" alt="doctor" class="responsive-img" />
+     <div class="doctorLindedinIconDiv">
+      <v-icon class="doctorLindedinIcon">mdi-linkedin</v-icon>
      </div>
-     <h3 style="text-align: center; margin-top: 40px">Dr. Sarah Nguyen</h3>
-     <h5 style="text-align: center">Chief Growth Officer</h5>
-    </v-col>
-   </v-row>
+    </div>
+    <h3 style="text-align: center; margin-top: 40px">Dr. Sarah Nguyen</h3>
+    <h5 style="text-align: center">Chief Growth Officer</h5>
+   </v-col>
+  </v-row>
 
-   <p style="text-align: center; margin-top: 40px">
-    Click here to see All Our <span class="specialistSpan">Specialists</span>
-   </p>
-  </v-container>
+  <p style="text-align: center; margin-top: 30px">
+   Click here to see All Our
+   <router-link to="/doctor-list"><span class="specialistSpan">Specialists</span></router-link>
+  </p>
  </div>
 </template>
 

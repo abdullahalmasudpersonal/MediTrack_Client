@@ -1,10 +1,10 @@
 <template>
- <!-- <div> -->
- <BannerPage />
- <OurSpecialist />
- <CustomerReview />
- <LatestNews />
- <!-- </div> -->
+ <v-container>
+  <BannerPage />
+  <OurSpecialist />
+  <CustomerReview />
+  <LatestNews />
+ </v-container>
 </template>
 
 <script setup lang="ts">

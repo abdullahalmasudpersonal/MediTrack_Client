@@ -1,43 +1,41 @@
 <template>
- <v-container>
-  <section>
-   <h5 class="customerReviewTag"># Testimonial</h5>
-   <h2 class="customerReviewTitle">What Our Clients Say</h2>
+ <section>
+  <h5 class="customerReviewTag"># Testimonial</h5>
+  <h2 class="customerReviewTitle">What Our Clients Say</h2>
 
-   <Swiper
-    :modules="[Autoplay, Pagination]"
-    :loop="true"
-    :space-between="20"
-    :autoplay="{ delay: 4000, disableOnInteraction: false }"
-    :pagination="{ clickable: true }"
-    :breakpoints="{
-     0: { slidesPerView: 1 },
-     640: { slidesPerView: 2 },
-     1024: { slidesPerView: 3 },
-    }"
-    class="testimonial-swiper"
-   >
-    <SwiperSlide v-for="(review, index) in reviews" :key="index">
-     <div class="testimonial-card">
-      <div style="display: flex; justify-content: space-between">
-       <div style="display: flex; gap: 10px">
-        <img :src="review.image" alt="Avatar" class="reviewCustomerImage" />
-        <div>
-         <h3 class="font-bold text-lg">{{ review.name }}</h3>
-         <p class="text-gray-500 text-sm">{{ review.title }}</p>
-        </div>
+  <Swiper
+   :modules="[Autoplay, Pagination]"
+   :loop="true"
+   :space-between="20"
+   :autoplay="{ delay: 4000, disableOnInteraction: false }"
+   :pagination="{ clickable: true }"
+   :breakpoints="{
+    0: { slidesPerView: 1 },
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+   }"
+   class="testimonial-swiper"
+  >
+   <SwiperSlide v-for="(review, index) in reviews" :key="index">
+    <div class="testimonial-card">
+     <div style="display: flex; justify-content: space-between">
+      <div style="display: flex; gap: 10px">
+       <img :src="review.image" alt="Avatar" class="reviewCustomerImage" />
+       <div>
+        <h3 class="font-bold text-lg">{{ review.name }}</h3>
+        <p class="text-gray-500 text-sm">{{ review.title }}</p>
        </div>
-       <v-icon class="reviewCustomerDoubleQuotation">mdi-format-quote-close</v-icon>
       </div>
-      <p style="margin-top: 15px; font-size: 15px">
-       “Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna
-       dictum porta. Cras ultricies ligula magna dictum porta.”
-      </p>
+      <v-icon class="reviewCustomerDoubleQuotation">mdi-format-quote-close</v-icon>
      </div>
-    </SwiperSlide>
-   </Swiper>
-  </section>
- </v-container>
+     <p style="margin-top: 15px; font-size: 15px">
+      “Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum
+      porta. Cras ultricies ligula magna dictum porta.”
+     </p>
+    </div>
+   </SwiperSlide>
+  </Swiper>
+ </section>
 </template>
 
 <script setup lang="ts">
@@ -82,7 +80,7 @@ const reviews = [
  text-align: center;
  font-family: 'sans-serif';
  color: #10b981;
- margin-top: 40px;
+ margin-top: 80px;
  font-size: 16px;
 }
 .customerReviewTitle {

@@ -69,10 +69,6 @@
  margin-top: 40px;
  margin-bottom: 40px;
 }
-.footerChildDiv {
- /* min-height: 370px; */
- /* border: 1px solid gray; */
-}
 .logo {
  width: 50px;
  height: 50px;

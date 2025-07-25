@@ -1,39 +1,37 @@
 <template>
  <div>
-  <v-container>
-   <div class="latestNews">
-    <h5 class="ourNewsTag"># News</h5>
-    <h3 class="newHeading">Our Latest News and Blogs</h3>
-    <div class="latestNewsDiv">
-     <div class="singleNesDiv">
-      <strong style="display: inline-block; margin-bottom: 15px"
-       >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
-      ><br />
-      <img src="@/assets/image/homepage/news/blog-1.jpg" alt="news img" />
-      <h5>Telemedicine vs. Traditional healthcare what’s right for you?</h5>
-      <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
-     </div>
+  <div class="latestNews">
+   <h5 class="ourNewsTag"># News</h5>
+   <h3 class="newHeading">Our Latest News and Blogs</h3>
+   <div class="latestNewsDiv">
+    <div class="singleNesDiv">
+     <strong style="display: inline-block; margin-bottom: 15px"
+      >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
+     ><br />
+     <img src="@/assets/image/homepage/news/blog-1.jpg" alt="news img" />
+     <h5>Telemedicine vs. Traditional healthcare what’s right for you?</h5>
+     <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
+    </div>
 
-     <div class="singleNesDiv">
-      <strong style="display: inline-block; margin-bottom: 15px"
-       >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
-      ><br />
-      <img src="@/assets/image/homepage/news/blog-2.jpg" alt="news img" />
-      <h5>How Telemedicine can improve the quality of healthcare</h5>
-      <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
-     </div>
+    <div class="singleNesDiv">
+     <strong style="display: inline-block; margin-bottom: 15px"
+      >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
+     ><br />
+     <img src="@/assets/image/homepage/news/blog-2.jpg" alt="news img" />
+     <h5>How Telemedicine can improve the quality of healthcare</h5>
+     <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
+    </div>
 
-     <div class="singleNesDiv">
-      <strong style="display: inline-block; margin-bottom: 15px"
-       >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
-      ><br />
-      <img src="@/assets/image/homepage/news/blog-5.jpg" alt="news img" />
-      <h5>How can we get telemedicine and telehealth services?</h5>
-      <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
-     </div>
+    <div class="singleNesDiv">
+     <strong style="display: inline-block; margin-bottom: 15px"
+      >By: Dr. Abdullah &nbsp;&nbsp;|&nbsp;&nbsp; February 4, 2025</strong
+     ><br />
+     <img src="@/assets/image/homepage/news/blog-5.jpg" alt="news img" />
+     <h5>How can we get telemedicine and telehealth services?</h5>
+     <p>Learn More &nbsp;<v-icon>mdi-arrow-right</v-icon></p>
     </div>
    </div>
-  </v-container>
+  </div>
  </div>
 </template>
 
@@ -41,7 +39,7 @@
 
 <style scoped>
 .latestNews {
- margin-top: 40px;
+ margin-top: 80px;
 }
 .ourNewsTag {
  text-align: center;
