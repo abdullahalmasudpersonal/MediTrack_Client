@@ -1,9 +1,5 @@
 <template>
- <div class="fade-slider">
-  <transition-group name="fade" tag="div" class="slider-wrapper">
-   <v-img v-if="items.length" :key="current" :src="items[current]" class="slider-img" cover></v-img>
-  </transition-group>
-  <!-- Overlay Content -->
+ <div class="backgroundImg">
   <div class="banner-content">
    <h1 class="banner-title">Services</h1>
    <p class="banner-subtitle">Home <span class="separator">●</span><span> Services</span></p>
@@ -43,8 +39,6 @@ onMounted(() => {
  }, 7000)
 })
 
-// import ServiceCard from '@/components/ServiceCard.vue'
-
 const services = [
  {
   icon: 'mdi-stethoscope',
@@ -80,55 +74,40 @@ const services = [
 </script>
 
 <style scoped>
-.fade-slider {
- height: 380px;
+/* .///////////////////////// */
+.backgroundImg {
  position: relative;
+ color: white;
+ background-image: url('@/assets/image/banner/banner1.jpg');
+ background-size: cover;
+ background-position: center;
+ background-attachment: fixed;
+ height: 40vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
  overflow: hidden;
 }
-.slider-wrapper {
+.backgroundImg::before {
+ content: '';
  position: absolute;
- width: 100%;
- height: 100%;
- z-index: 1;
-}
-.slider-img {
- width: 100%;
- height: 100%;
- position: absolute;
- top: 0;
- left: 0;
-}
-.fade-enter-active,
-.fade-leave-active {
- transition: opacity 2s ease-in-out;
-}
-.fade-enter-from,
-.fade-leave-to {
- opacity: 0;
+ inset: 0;
+ background-color: rgba(0, 0, 0, 0.658);
+ z-index: 0;
 }
 .banner-content {
  position: relative;
- z-index: 2;
- height: 100%;
- width: 100%;
- color: white;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
  text-align: center;
- padding: 0 20px;
- background: rgba(0, 0, 0, 0.678);
+ z-index: 1;
 }
 .banner-title {
  font-size: 3rem;
  font-weight: bold;
 }
 .banner-subtitle {
- font-size: 1.2rem;
+ font-size: 1rem;
  font-weight: 600;
  margin-bottom: 1rem;
- max-width: 600px;
 }
 .separator {
  margin: 0 6px;
@@ -155,7 +134,13 @@ const services = [
  margin-bottom: 16px;
  color: #222;
 }
+.section-description {
+ color: #666;
+ font-size: 16px;
+ line-height: 1.8;
+}
 .service-section {
- padding: 60px 0px;
+ padding-top: 20px;
+ padding-bottom: 60px;
 }
 </style>

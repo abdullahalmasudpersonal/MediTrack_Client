@@ -65,7 +65,7 @@
  text-align: center;
  font-family: 'sans-serif';
  color: #10b981;
- /* margin-top: 40px; */
+ padding-top: 90px;
  font-size: 16px;
 }
 .ourSpecialistHeading {

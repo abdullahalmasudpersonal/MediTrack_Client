@@ -39,13 +39,13 @@
 
 <style scoped>
 .latestNews {
- margin-top: 80px;
+ padding-top: 90px;
+ padding-bottom: 80px;
 }
 .ourNewsTag {
  text-align: center;
  font-family: 'sans-serif';
  color: #10b981;
- margin-top: 40px;
  font-size: 16px;
 }
 .newHeading {

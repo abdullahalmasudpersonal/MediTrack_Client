@@ -31,6 +31,8 @@
     label="Specialization"
     v-model="form.specialization"
     :items="specializationOptions"
+    item-title="title"
+    item-value="value"
     :rules="[rules.required]"
    />
 
@@ -104,23 +106,22 @@ const genderOptions = [
 ]
 
 const specializationOptions = [
- 'cardiology',
- 'dermatology',
- 'neurology',
- 'pediatrics',
- 'orthopedics',
- 'gynecology',
- 'psychiatry',
- 'general',
- 'surgery',
- 'radiology',
- 'ent',
- 'urology',
- 'oncology',
- 'ophthalmology',
- 'anesthesiology',
+ { title: 'Cardiology', value: 'cardiology' },
+ { title: 'Dermatology', value: 'dermatology' },
+ { title: 'Neurology', value: 'neurology' },
+ { title: 'Pediatrics', value: 'pediatrics' },
+ { title: 'Orthopedics', value: 'orthopedics' },
+ { title: 'Gynecology', value: 'gynecology' },
+ { title: 'Psychiatry', value: 'psychiatry' },
+ { title: 'General Medicine', value: 'general' },
+ { title: 'Surgery', value: 'surgery' },
+ { title: 'Radiology', value: 'radiology' },
+ { title: 'ENT (Ear, Nose, Throat)', value: 'ent' },
+ { title: 'Urology', value: 'urology' },
+ { title: 'Oncology', value: 'oncology' },
+ { title: 'Ophthalmology', value: 'ophthalmology' },
+ { title: 'Anesthesiology', value: 'anesthesiology' },
 ]
-
 const consultationTypeOptions = ['online', 'offline', 'video']
 
 const rules = {

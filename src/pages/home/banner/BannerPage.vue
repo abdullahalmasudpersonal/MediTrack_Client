@@ -39,11 +39,12 @@ onMounted(() => {
 
 <style scoped>
 .bannerpage {
- margin-top: 30px;
- margin-bottom: 90px;
+ /* margin-top: 30px;
+ margin-bottom: 90px; */
 }
 .fade-slider {
- height: 550px;
+ /* height: 550px; */
+ height: calc(100vh - 70px);
  position: relative;
  overflow: hidden;
  border-radius: 5px;
