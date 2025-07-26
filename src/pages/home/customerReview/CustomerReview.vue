@@ -79,7 +79,7 @@ const reviews = [
 .customerReviewTag {
  text-align: center;
  font-family: 'sans-serif';
- color: #10b981;
+ color: rgb(11, 100, 11);
  margin-top: 80px;
  font-size: 16px;
 }
@@ -114,6 +114,6 @@ const reviews = [
 }
 .reviewCustomerDoubleQuotation {
  font-size: 60px;
- color: rgb(228, 228, 228);
+ color: rgb(11, 100, 11);
 }
 </style>

@@ -64,7 +64,7 @@
 .ourSecialistTag {
  text-align: center;
  font-family: 'sans-serif';
- color: #10b981;
+ color: rgb(11, 100, 11);
  padding-top: 90px;
  font-size: 16px;
 }
@@ -100,18 +100,18 @@
  font-size: 18px;
  padding: 23px;
  border-radius: 50%;
- background: rgb(21, 98, 199);
+ background: rgb(11, 100, 11);
  color: white;
  cursor: pointer;
 }
 .specialistSpan {
- color: rgb(21, 199, 89);
+ color: rgb(11, 100, 11);
  cursor: pointer;
  text-decoration: underline;
  font-weight: 600;
  transition: 0.3s;
 }
 .specialistSpan:hover {
- color: rgb(21, 98, 199);
+ color: rgb(38, 182, 2);
 }
 </style>

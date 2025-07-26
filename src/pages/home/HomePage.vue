@@ -5,11 +5,13 @@
  <BannerPage />
  <OurSpecialCare />
  <HomeService />
- <v-container>
-  <OurSpecialist />
-  <CustomerReview />
-  <LatestNews />
- </v-container>
+ <div class="bgcolor">
+  <v-container>
+   <OurSpecialist />
+   <CustomerReview />
+   <LatestNews />
+  </v-container>
+ </div>
 </template>
 
 <script setup lang="ts">
@@ -21,4 +23,8 @@ import OurSpecialCare from './ourSpecialCare/OurSpecialCare.vue'
 import OurSpecialist from './ourSpecialist/OurSpecialist.vue'
 </script>
 
-<style scoped></style>
+<style scoped>
+.bgcolor {
+ background-color: rgb(248, 255, 249);
+}
+</style>

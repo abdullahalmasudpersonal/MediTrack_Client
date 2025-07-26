@@ -5,7 +5,7 @@
     <v-col cols="12" sm="6" md="3" class="footerChildDiv">
      <div style="display: flex; align-items: center">
       <img src="../../assets/image/logo/meditrack.png" class="logo" alt="logo" />
-      <p style="font-size: 26px; font-weight: 700; color: #dadada">&nbsp;MediTrack</p>
+      <p style="font-size: 26px; font-weight: 700; color: rgb(16, 148, 16)">&nbsp;MediTrack</p>
      </div>
      <p style="margin-top: 30px">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -62,8 +62,8 @@
 
 <style scoped>
 .footer {
- color: white;
- background: linear-gradient(to right, #021e4e 10%, #0e1d46 70%, #021e47);
+ color: rgb(255, 255, 255);
+ background: linear-gradient(to right, #033d06 10%, #093809 70%, #0b4403);
 }
 .footerDiv {
  margin-top: 40px;
@@ -79,7 +79,7 @@
  height: 30px;
  width: 30px;
  font-size: 22px;
- background: #050c41;
+ background: #00751a;
  color: rgb(255, 255, 255);
  border-radius: 50%;
  padding: 23px;
@@ -88,7 +88,7 @@
  cursor: pointer;
 }
 .footerSocialIon:hover {
- background: #02407e;
+ background: #01aa0f;
  color: white;
  transition: 0.3s ease;
 }
@@ -145,7 +145,7 @@
 /* ////////////////////////// */
 .footerButtomDiv {
  height: 70px;
- background: linear-gradient(to right, rgb(9, 19, 44) 60%, rgb(3, 15, 31));
+ background: linear-gradient(to right, rgb(3, 51, 22), rgb(5, 71, 5) 60%, rgb(6, 59, 13));
  color: white;
  display: flex;
  justify-content: center;

@@ -14,7 +14,7 @@
    <div class="banner-content">
     <h1 class="banner-title">Your Trusted Telemedicine Platform</h1>
     <p class="banner-subtitle">Connect with certified doctors anytime, anywhere</p>
-    <v-btn color="#00BFA5" class="banner-btn" to="/doctor-list"> Find a Doctor </v-btn>
+    <v-btn color="rgb(11, 100, 11)" class="banner-btn" to="/doctor-list"> Find a Doctor </v-btn>
    </div>
   </div>
  </div>

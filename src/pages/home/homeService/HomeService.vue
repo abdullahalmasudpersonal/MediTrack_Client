@@ -91,7 +91,7 @@ const services = [
 }
 .section-subtitle {
  font-family: 'sans-serif';
- color: #10b981;
+ color: rgb(20, 173, 20);
  font-size: 16px;
 }
 .section-title {

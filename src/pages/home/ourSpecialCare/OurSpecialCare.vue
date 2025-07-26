@@ -15,7 +15,7 @@
          style="
           padding: 28px;
           font-size: 27px;
-          background-color: aqua;
+          background-color: rgb(11, 100, 11);
           color: white;
           border-radius: 50%;
          "
@@ -40,19 +40,19 @@ const carelist = [
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
  },
  {
-  icon: 'mdi-hand-heart',
+  icon: 'mdi-briefcase-check',
   title: 'Experience',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
  },
  {
-  icon: 'mdi-hand-heart',
+  icon: 'mdi-certificate',
   title: 'Certified Dentists',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
  },
  {
-  icon: 'mdi-hand-heart',
+  icon: 'mdi-tooth-outline',
   title: 'Quality Brackets',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
@@ -70,7 +70,7 @@ const carelist = [
 }
 .specialCareTag {
  font-family: 'sans-serif';
- color: #10b981;
+ color: rgb(11, 100, 11);
  font-size: 16px;
  padding-bottom: 8px;
 }
