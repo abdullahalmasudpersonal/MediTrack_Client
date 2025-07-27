@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import 'aos/dist/aos.css'
+</script>
 
 <template>
  <div id="app">

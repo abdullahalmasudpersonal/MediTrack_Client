@@ -2,11 +2,26 @@
  <div style="padding-top: 90px; padding-bottom: 90px">
   <h5 class="ourSecialistTag"># Meet Our Specialists</h5>
   <h2 class="ourSpecialistHeading">
-   Connect with our expert specialists<br />
-   dedicated to your care
+   <span
+    v-for="(char, index) in headingText"
+    :key="index"
+    class="char"
+    :style="{ animationDelay: index * 0.05 + 's' }"
+   >
+    {{ char }}
+   </span>
   </h2>
   <v-row>
-   <v-col cols="12" sm="6" md="3" lg="3" v-for="(doctor, index) in doctorlist" :key="index">
+   <v-col
+    cols="12"
+    sm="6"
+    md="3"
+    lg="3"
+    v-for="(doctor, index) in doctorlist"
+    :key="index"
+    data-aos="fade-down-left"
+    :data-aos-delay="index * 200"
+   >
     <div class="doctorimagediv">
      <v-img :src="doctor.img" alt="doctor" class="responsive-img" />
      <div class="doctorLindedinIconDiv">
@@ -30,6 +45,9 @@ import doctor1 from '@/assets/image/ourSpecialist/team1-1.jpg'
 import doctor2 from '@/assets/image/ourSpecialist/team2-1.jpg'
 import doctor3 from '@/assets/image/ourSpecialist/team3-1.jpg'
 import doctor4 from '@/assets/image/ourSpecialist/team4-1.jpg'
+import { ref } from 'vue'
+const headingText = ref('Connect with our expert specialists dedicated to your care')
+
 const doctorlist = [
  {
   name: 'Dr. Addison Patel',
@@ -117,5 +135,17 @@ const doctorlist = [
 }
 .specialistSpan:hover {
  color: rgb(38, 182, 2);
+}
+/* /////////// title /////////////////////////// */
+.char {
+ opacity: 0;
+ transform: translateY(20px);
+ animation: fadeInUp 0.5s forwards;
+}
+@keyframes fadeInUp {
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
 }
 </style>

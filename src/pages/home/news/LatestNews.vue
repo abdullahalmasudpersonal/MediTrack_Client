@@ -3,7 +3,15 @@
   <h5 class="ourNewsTag"># Latest News</h5>
   <h2 class="newHeading">Our Latest News and Blogs</h2>
   <v-row>
-   <v-col cols="12" md="6" lg="4" v-for="(news, index) in newslist" :key="index">
+   <v-col
+    cols="12"
+    md="6"
+    lg="4"
+    v-for="(news, index) in newslist"
+    :key="index"
+    data-aos="fade-down-left"
+    :data-aos-delay="index * 200"
+   >
     <div class="newDiv">
      <strong style="display: inline-block; margin-bottom: 15px"
       >By: {{ news.writername }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ news.date }}</strong

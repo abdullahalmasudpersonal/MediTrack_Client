@@ -10,6 +10,8 @@
      :key="index"
      @mouseover="hoverIndex = index"
      @mouseleave="hoverIndex = null"
+     data-aos="fade-down"
+     :data-aos-delay="index * 200"
     >
      <div
       class="featuredCard"
@@ -35,7 +37,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
+import AOS from 'aos'
+
+onMounted(() => {
+ AOS.init({
+  duration: 1000,
+ })
+})
 
 const hoverIndex = ref<number | null>(null)
 const featuredlist = [

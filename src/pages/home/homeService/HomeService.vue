@@ -3,15 +3,32 @@
   <v-container>
    <div class="service-intro">
     <h5 class="section-subtitle"># Our Services</h5>
-    <h2 class="section-title">Our Healthcare Services</h2>
-    <p class="section-description">
+    <h2 class="section-title" data-aos="fade-down">
+     <span
+      v-for="(char, index) in headingText"
+      :key="index"
+      class="char"
+      :style="{ animationDelay: index * 0.1 + 's' }"
+     >
+      {{ char }}
+     </span>
+    </h2>
+    <p class="section-description" data-aos="fade-down">
      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
      labore et dolore magna aliqua. Quis ipsum suspendisse.
     </p>
    </div>
    <div style="padding-top: 20px; padding-bottom: 100px">
     <v-row>
-     <v-col v-for="(service, index) in services" :key="index" cols="12" sm="6" md="4">
+     <v-col
+      v-for="(service, index) in services"
+      :key="index"
+      cols="12"
+      sm="6"
+      md="4"
+      data-aos="fade-left"
+      :data-aos-delay="index * 200"
+     >
       <div class="service-section">
        <ServiceCard
         :icon="service.icon"
@@ -28,6 +45,8 @@
 
 <script setup lang="ts">
 import ServiceCard from '@/pages/ourServices/ServiceCard.vue'
+import { ref } from 'vue'
+const headingText = ref('Our Healthcare Services')
 
 const services = [
  {
@@ -103,5 +122,17 @@ const services = [
  font-size: 17px;
  font-weight: 600;
  line-height: 1.8;
+}
+/* /////////// title /////////////////////////// */
+.char {
+ opacity: 0;
+ transform: translateY(20px);
+ animation: fadeInUp 0.5s forwards;
+}
+@keyframes fadeInUp {
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
 }
 </style>

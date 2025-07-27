@@ -2,13 +2,30 @@
  <div class="specialCare">
   <v-container>
    <h5 class="specialCareTag"># Our Special Features</h5>
-   <h2 class="specialCareHeading">
-    Features That You Will Love
-    <span style="text-decoration: underline">Us and Enjoy Specialized</span> Care
+   <h2 class="specialCareHeading" data-aos="fade-down">
+    <!-- Features That You Will Love
+    <span style="color: rgb(11, 100, 11)">Us and Enjoy Specialized</span> Care -->
+    <span
+     v-for="(char, index) in headingText"
+     :key="index"
+     class="char"
+     :style="{ animationDelay: index * 0.05 + 's' }"
+    >
+     {{ char }}
+    </span>
    </h2>
    <div>
     <v-row>
-     <v-col v-for="(care, index) in carelist" :key="index" cols="12" sm="6" md="6" lg="3">
+     <v-col
+      v-for="(care, index) in carelist"
+      :key="index"
+      cols="12"
+      sm="6"
+      md="6"
+      lg="3"
+      data-aos="fade-down-left"
+      :data-aos-delay="index * 200"
+     >
       <div class="specialCareCard" :style="{ backgroundColor: care.bgcolor }">
        <h4 class="special-caretitle">
         <v-icon class="special-careicon">{{ care.icon }}</v-icon
@@ -24,6 +41,16 @@
 </template>
 
 <script setup lang="ts">
+import AOS from 'aos'
+import { onMounted, ref } from 'vue'
+const headingText = ref('Features That You Will Love Us and Enjoy Specialized Care')
+
+onMounted(() => {
+ AOS.init({
+  duration: 1000,
+ })
+})
+
 const carelist = [
  {
   icon: 'mdi-hand-heart',
@@ -126,18 +153,16 @@ const carelist = [
  height: 100%;
  color: white;
 }
-.specialCareCard:hover {
- transform: translateY(-5px);
+/* /////////// title /////////////////////////// */
+.char {
+ opacity: 0;
+ transform: translateY(20px);
+ animation: fadeInUp 0.5s forwards;
 }
-.yellow-hover:before {
- background: rgb(190, 188, 72);
-}
-
-.blue-hover:before {
- background: rgb(72, 129, 190);
-}
-
-.green-hover:before {
- background: rgb(11, 100, 11);
+@keyframes fadeInUp {
+ to {
+  opacity: 1;
+  transform: translateY(0);
+ }
 }
 </style>
