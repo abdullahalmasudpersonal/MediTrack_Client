@@ -42,7 +42,7 @@ const counterlist = ref<CounterItem[]>([
  { title: 'Connections Success Rate', target: 88, currentValue: 0, suffix: '%' },
 ])
 
-function animateCounter(counter: CounterItem, duration = 2000) {
+function animateCounter(counter: CounterItem, duration = 1000) {
  const startTime = performance.now()
  const startValue = 0
  const endValue = counter.target
@@ -69,22 +69,53 @@ onMounted(() => {
 
 // /////////////////
 const counterSection = ref<HTMLElement | null>(null)
-const hasAnimated = ref(false)
+// const hasAnimated = ref(false)
+
+function resetCounters() {
+ counterlist.value.forEach((counter) => {
+  counter.currentValue = 0
+ })
+}
+
+// function setupObserver() {
+//  const observer = new IntersectionObserver(
+//   (entries) => {
+//    const entry = entries[0]
+//    if (entry.isIntersecting && !hasAnimated.value) {
+//     counterlist.value.forEach((counter) => {
+//      animateCounter(counter)
+//     })
+//     hasAnimated.value = true
+//     observer.disconnect() // একবারই animate হবে
+//    }
+//   },
+//   {
+//    threshold: 0.3, // ৩০% এলিমেন্ট স্ক্রিনে আসলে কাজ করবে
+//   },
+//  )
+
+//  if (counterSection.value) {
+//   observer.observe(counterSection.value)
+//  }
+// }
 
 function setupObserver() {
  const observer = new IntersectionObserver(
   (entries) => {
    const entry = entries[0]
-   if (entry.isIntersecting && !hasAnimated.value) {
+
+   if (entry.isIntersecting) {
+    // ভিউতে আসলে animate শুরু
     counterlist.value.forEach((counter) => {
      animateCounter(counter)
     })
-    hasAnimated.value = true
-    observer.disconnect() // একবারই animate হবে
+   } else {
+    // ভিউ থেকে চলে গেলে reset
+    resetCounters()
    }
   },
   {
-   threshold: 0.3, // ৩০% এলিমেন্ট স্ক্রিনে আসলে কাজ করবে
+   threshold: 0.3,
   },
  )
 
@@ -92,6 +123,7 @@ function setupObserver() {
   observer.observe(counterSection.value)
  }
 }
+
 onMounted(() => {
  setupObserver()
 })
