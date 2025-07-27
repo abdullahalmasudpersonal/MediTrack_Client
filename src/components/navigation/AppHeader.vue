@@ -95,7 +95,7 @@ const dashboardPath = computed(() => {
 </script>
 <style scoped>
 .navber {
- background-color: rgb(255, 255, 255) !important;
+ background-color: rgb(247, 255, 237) !important;
 }
 .logoname {
  font-weight: 700;

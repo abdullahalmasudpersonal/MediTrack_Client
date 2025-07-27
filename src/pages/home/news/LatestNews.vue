@@ -4,7 +4,7 @@
   <h2 class="newHeading">Our Latest News and Blogs</h2>
   <v-row>
    <v-col cols="12" md="6" lg="4" v-for="(news, index) in newslist" :key="index">
-    <div>
+    <div class="newDiv">
      <strong style="display: inline-block; margin-bottom: 15px"
       >By: {{ news.writername }} &nbsp;&nbsp;|&nbsp;&nbsp; {{ news.date }}</strong
      >
@@ -63,6 +63,12 @@ const newslist = [
  margin-bottom: 40px;
  font-size: clamp(1.7rem, 2.5vw, 2rem);
  font-family: system-ui, '-apple-system';
+}
+.newDiv {
+ transition: all 0.3s ease;
+}
+.newDiv:hover {
+ transform: translateY(-5px);
 }
 .newTitle {
  margin-top: 15px;

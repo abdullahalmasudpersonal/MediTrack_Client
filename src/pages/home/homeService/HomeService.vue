@@ -9,18 +9,18 @@
      labore et dolore magna aliqua. Quis ipsum suspendisse.
     </p>
    </div>
-   <div>
-    <div class="service-section">
-     <v-row>
-      <v-col v-for="(service, index) in services" :key="index" cols="12" sm="6" md="4">
+   <div style="padding-top: 20px; padding-bottom: 100px">
+    <v-row>
+     <v-col v-for="(service, index) in services" :key="index" cols="12" sm="6" md="4">
+      <div class="service-section">
        <ServiceCard
         :icon="service.icon"
         :title="service.title"
         :description="service.description"
        />
-      </v-col>
-     </v-row>
-    </div>
+      </div>
+     </v-col>
+    </v-row>
    </div>
   </v-container>
  </div>
@@ -103,9 +103,5 @@ const services = [
  font-size: 17px;
  font-weight: 600;
  line-height: 1.8;
-}
-.service-section {
- padding-top: 20px;
- padding-bottom: 100px;
 }
 </style>

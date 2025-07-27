@@ -23,7 +23,7 @@
       margin-top: 20px;
       font-weight: 600;
       font-size: 16px;
-      color: rgb(11, 100, 11);
+      /* color: rgb(11, 100, 11); */
       cursor: pointer;
      "
     >
@@ -47,17 +47,23 @@ defineProps<{
  padding: 30px 20px;
  border-radius: 12px;
  text-align: center;
- transition: all 0.3s ease;
+ transition: all 0.5s ease;
  height: 100%;
+ background-color: rgb(246, 253, 253);
+}
+.service-card:hover {
+ background-color: rgb(31, 119, 38);
+ color: white;
+ transform: translateY(-8px);
 }
 .service-title {
  font-size: 25px;
  font-weight: 700;
  margin-bottom: 10px;
- color: #222;
+ /* color: #222; */
 }
 .service-description {
  font-size: 16px;
- color: #575757;
+ /* color: #575757; */
 }
 </style>

@@ -9,18 +9,10 @@
    <div>
     <v-row>
      <v-col v-for="(care, index) in carelist" :key="index" cols="12" sm="6" md="6" lg="3">
-      <div class="specialCareCard">
-       <h4 style="font-size: clamp(1.2rem, 2.5vw, 1.4rem); margin-bottom: 12px">
-        <v-icon
-         style="
-          padding: 28px;
-          font-size: 27px;
-          background-color: rgb(11, 100, 11);
-          color: white;
-          border-radius: 50%;
-         "
-         >{{ care.icon }}</v-icon
-        >&nbsp;{{ care.title }}
+      <div class="specialCareCard" :style="{ backgroundColor: care.bgcolor }">
+       <h4 class="special-caretitle">
+        <v-icon class="special-careicon">{{ care.icon }}</v-icon
+        >&nbsp; {{ care.title }}
        </h4>
        <p>{{ care.description }}</p>
       </div>
@@ -38,31 +30,38 @@ const carelist = [
   title: 'Patient Care',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
+  bgcolor: 'rgb(204, 233, 215)',
+  hoverbgcolor: '',
  },
  {
   icon: 'mdi-briefcase-check',
   title: 'Experience',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
+  bgcolor: 'rgb(215, 233, 204)',
+  hoverbgcolor: '',
  },
  {
   icon: 'mdi-certificate',
   title: 'Certified Dentists',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
+  bgcolor: 'rgb(204, 231, 233)',
+  hoverbgcolor: '',
  },
  {
   icon: 'mdi-tooth-outline',
   title: 'Quality Brackets',
   description:
    'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor sed do eiusmod tempor',
+  bgcolor: 'rgb(204, 214, 233)',
+  hoverbgcolor: '',
  },
 ]
 </script>
 
 <style scoped>
 .specialCare {
- /* height: 500px; */
  background-color: aliceblue;
  text-align: center;
  padding-top: 90px;
@@ -85,9 +84,60 @@ const carelist = [
 }
 /*---------- specialCareCard -------------- */
 .specialCareCard {
- background-color: rgb(255, 255, 255);
+ position: relative;
+ background-color: rgb(204, 214, 233);
+ color: rgb(41, 41, 41);
  border-radius: 3px;
  text-align: left;
  padding: 25px;
+ z-index: 0;
+ overflow: hidden;
+ transition: transform 0.4s ease;
+}
+.special-caretitle {
+ position: relative;
+ font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+ margin-bottom: 12px;
+}
+.special-careicon {
+ padding: 28px;
+ font-size: 27px;
+ background-color: rgb(11, 100, 11);
+ color: white;
+ border-radius: 50%;
+}
+.specialCareCard:before {
+ content: '';
+ position: absolute;
+ border-radius: 3px;
+ width: 0%;
+ height: 0%;
+ top: 0;
+ left: 0;
+ background: rgb(92, 212, 212);
+ color: white;
+ transition: all 1s ease;
+ z-index: -1;
+ transform: rotate(0deg);
+ transform-origin: top left;
+}
+.specialCareCard:hover:before {
+ width: 100%;
+ height: 100%;
+ color: white;
+}
+.specialCareCard:hover {
+ transform: translateY(-5px);
+}
+.yellow-hover:before {
+ background: rgb(190, 188, 72);
+}
+
+.blue-hover:before {
+ background: rgb(72, 129, 190);
+}
+
+.green-hover:before {
+ background: rgb(11, 100, 11);
 }
 </style>
