@@ -19,7 +19,7 @@
     lg="3"
     v-for="(doctor, index) in doctorlist"
     :key="index"
-    data-aos="fade-down-left"
+    data-aos="fade-up-right"
     :data-aos-delay="index * 200"
    >
     <div class="doctorimagediv">

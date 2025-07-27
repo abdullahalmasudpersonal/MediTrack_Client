@@ -1,7 +1,7 @@
 <template>
  <div>
   <v-container>
-   <v-row style="padding: 90px 70px">
+   <v-row style="padding-top: 90px; padding-bottom: 90px">
     <v-col
      cols="12"
      md="4"

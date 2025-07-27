@@ -12,9 +12,14 @@
    </transition-group>
    <!-- Overlay Content -->
    <div class="banner-content">
-    <h1 class="banner-title">Your Trusted Telemedicine Platform</h1>
-    <p class="banner-subtitle">Connect with certified doctors anytime, anywhere</p>
-    <v-btn color="rgb(11, 100, 11)" class="banner-btn" to="/doctor-list"> Find a Doctor </v-btn>
+    <v-container>
+     <div style="padding-bottom: 150px">
+      <h1 class="banner-title">We Provide Remote Health Care Services</h1>
+      <!-- <h1 class="banner-title">Your Trusted Telemedicine Platform</h1> -->
+      <p class="banner-subtitle">Connect with certified doctors anytime, anywhere</p>
+      <v-btn color="rgb(11, 100, 11)" class="banner-btn" to="/doctor-list"> Find a Doctor </v-btn>
+     </div>
+    </v-container>
    </div>
   </div>
  </div>
@@ -43,11 +48,11 @@ onMounted(() => {
  margin-bottom: 90px; */
 }
 .fade-slider {
- /* height: 550px; */
+ /* height: 350px; */
  height: calc(100vh - 70px);
  position: relative;
  overflow: hidden;
- border-radius: 5px;
+ /* border-radius: 5px; */
 }
 .slider-wrapper {
  position: absolute;
@@ -77,19 +82,23 @@ onMounted(() => {
  width: 100%;
  color: white;
  display: flex;
+ align-items: center;
+ /* display: flex;
  flex-direction: column;
  align-items: center;
  justify-content: center;
- text-align: center;
- padding: 0 20px;
+ text-align: center; */
  background: rgba(0, 0, 0, 0.3);
 }
 .banner-title {
- font-size: 3rem;
+ font-size: clamp(2rem, 5vw, 5rem);
  font-weight: bold;
+ line-height: 1.2;
+ max-width: 850px;
 }
 .banner-subtitle {
- font-size: 1.5rem;
+ font-size: clamp(1rem, 1.2vw, 2rem);
+ margin-top: 0.5rem;
  margin-bottom: 1rem;
  max-width: 600px;
 }

@@ -23,7 +23,7 @@
       sm="6"
       md="6"
       lg="3"
-      data-aos="fade-down-left"
+      data-aos="fade-right"
       :data-aos-delay="index * 200"
      >
       <div class="specialCareCard" :style="{ backgroundColor: care.bgcolor }">

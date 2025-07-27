@@ -9,7 +9,7 @@
     lg="4"
     v-for="(news, index) in newslist"
     :key="index"
-    data-aos="fade-down-left"
+    data-aos="zoom-in-up"
     :data-aos-delay="index * 200"
    >
     <div class="newDiv">
