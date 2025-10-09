@@ -5,7 +5,7 @@
     <v-card elevation="4" class="pa-4 rounded">
      <v-card-title class="text-h6 font-weight-bold">Create Appointment</v-card-title>
      <v-card-text>
-      <v-form v-model="formValid" @submit.prevent="submitForm">
+      <v-form ref="formRef" v-model="formValid" @submit.prevent="submitForm">
        <v-row dense>
         <v-col cols="12" md="6">
          <v-text-field
@@ -124,6 +124,7 @@ const rules = {
  phone: (v: string) => /^((\+8801|01)\d{9})$/.test(v) || 'Invalid Bangladeshi number',
 }
 const formValid = ref(false)
+const formRef = ref()
 
 // interface FormData {
 //  patient_name: string
@@ -152,17 +153,18 @@ const form = ref({
  appointment_date: '',
  appointment_time: '',
 })
-
+// abdu@g.c
 /////////// Load doctor data ///////////
 const doctorName = ref('')
 const doctorStore = useDoctorStore()
 const { singleDoctor } = storeToRefs(doctorStore)
+
 onMounted(async () => {
  const doctorId = route.params.id as string
  await doctorStore.getSingleDoctorStore(doctorId)
  if (singleDoctor.value) {
   doctorName.value = singleDoctor.value.name
-  form.value.doctor = singleDoctor.value.user.id
+  form.value.doctor = singleDoctor.value.id
   form.value.specialization = singleDoctor.value.specialization
  }
 })
@@ -170,12 +172,33 @@ onMounted(async () => {
 ////////// Appointment submit form ////////////////
 const appointmentStore = useAppointmentStore()
 // const { appointment, loading, error } = storeToRefs(appointmentStore)
-
+const snackbar = ref({
+ show: false,
+ message: '',
+ color: 'success', // or 'error'
+})
 const submitForm = async () => {
  if (!formValid.value) return
- console.log('Submitting form:', form.value)
- const response = await appointmentStore.createAppointmentStore(form.value)
- console.log('Appointment Created:', response)
+ try {
+  const response = await appointmentStore.createAppointmentStore(form.value)
+  if (response?.data) {
+   formRef.value?.reset()
+   snackbar.value = {
+    show: true,
+    message: 'Appointment created successfully!',
+    color: 'success',
+   }
+  }
+
+  // toast.success('Appointment created successfully!')
+ } catch (error) {
+  console.error('Error creating appointment:', error)
+  snackbar.value = {
+   show: true,
+   message: 'Something went wrong!',
+   color: 'error',
+  }
+ }
 }
 </script>
 

@@ -8,6 +8,7 @@ const email = ref('abdullah@gmail.com')
 const password = ref('123456')
 const router = useRouter()
 const store = useAuthStore()
+// const [loading, setLoading] = useState(false);
 
 const handleLogin = async () => {
  try {

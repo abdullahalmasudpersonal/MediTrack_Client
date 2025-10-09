@@ -1,10 +1,11 @@
+/* CSS Reset */
 *,
 *::before,
 *::after {
  box-sizing: border-box;
- margin: 0;
  font-family: system-ui;
- /* font-weight: normal; */
+ margin: 0;
+ padding: 0;
 }
 
 .v-container {
