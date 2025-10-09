@@ -8,9 +8,10 @@ const email = ref('abdullah@gmail.com')
 const password = ref('123456')
 const router = useRouter()
 const store = useAuthStore()
-// const [loading, setLoading] = useState(false);
+const loading = ref(false)
 
 const handleLogin = async () => {
+ loading.value = true
  try {
   const res = await store.login({ email: email.value, password: password.value })
   const user = res?.data?.user
@@ -26,6 +27,8 @@ const handleLogin = async () => {
   }
  } catch (error) {
   console.log('error', error)
+ } finally {
+  loading.value = false
  }
 
  // try {
@@ -76,7 +79,12 @@ const handleLogin = async () => {
       <br />
       <p class="resetPassword" style="">Forget Password</p>
      </div>
-     <input class="loginBtn" type="submit" value="Login" />
+     <input
+      class="loginBtn"
+      type="submit"
+      :disabled="loading"
+      :value="loading ? 'Loading in...' : 'Login'"
+     />
      <p class="changeAccount">
       Don't have an account
       <router-link style="text-decoration: none" :to="{ name: 'signup' }">
