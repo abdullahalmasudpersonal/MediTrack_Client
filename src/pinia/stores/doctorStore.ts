@@ -15,7 +15,7 @@ interface Availability {
  [day: string]: string
 }
 
-interface DoctorProfile {
+export interface TGetDoctor {
  id: string
  user: User
  name: string
@@ -27,24 +27,44 @@ interface DoctorProfile {
  education: string
  experience_years: number
  hospital_affiliation: string | null
- availability: Availability
- consultation_type: 'online' | 'offline' | 'both'
- fees: string
+ availability: Availability | null
+ fees: number
  photo: string
  bio: string | null
  address: string
  updated_at: string
 }
 
+export interface TCreateDoctor {
+ name: string
+ email: string
+ password: string
+ phone_number: string
+ gender: string
+ birthDate: string | null
+ specialization: string
+ license_number: string
+ education: string
+ experience_years: number
+ hospital_affiliation: string | null
+ availability: Availability | null
+ fees: number
+ photo: string
+ bio: string | null
+ address: string
+}
+
 export const useDoctorStore = defineStore('doctor', {
  state: (): {
-  allDoctor: DoctorProfile[] | null
-  singleDoctor: DoctorProfile | null
+  allDoctor: TGetDoctor[] | null
+  singleDoctor: TGetDoctor | null
+  doctor: TCreateDoctor | null
   loading: boolean
   error: string | null
  } => ({
   allDoctor: [],
   singleDoctor: null,
+  doctor: null,
   loading: false,
   error: null as string | null,
  }),
@@ -54,11 +74,13 @@ export const useDoctorStore = defineStore('doctor', {
    this.loading = true
    try {
     const data = await doctorApi.getAllDoctor(filters)
-    this.allDoctor = data
+    this.allDoctor = data.data
+    // console.log(data, 'data')
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
     this.error = err.response?.data?.message || 'Failed to load all doctor'
+    return err.response?.data
    } finally {
     this.loading = false
    }
@@ -72,6 +94,21 @@ export const useDoctorStore = defineStore('doctor', {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
     this.error = err.response?.data?.message || 'Failed to load doctor profile'
+    // return err.response?.data
+   } finally {
+    this.loading = false
+   }
+  },
+  async createDoctorStore(doctorData: TCreateDoctor) {
+   this.loading = true
+   try {
+    const data = await doctorApi.createDoctor(doctorData)
+    this.doctor = data
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    this.error = err.response?.data?.message || 'Failed to create doctor'
+    return err.response?.data
    } finally {
     this.loading = false
    }

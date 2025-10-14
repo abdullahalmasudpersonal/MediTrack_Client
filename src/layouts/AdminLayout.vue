@@ -10,9 +10,9 @@
    <AdminSidebar />
   </v-navigation-drawer>
   <v-main>
+   <AdminDashboardNavber @toggle-drawer="drawer = !drawer" />
    <div class="admin-content">
     <div class="admin-content-div">
-     <AdminDashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>
@@ -46,18 +46,17 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .sideber-bg-color {
- background-color: rgb(40, 30, 85);
+ background-color: rgb(34, 23, 85);
 }
 .v-main {
  flex: 1;
- background-color: #25293c;
+ background-color: #2b1758;
 }
 .admin-content {
- color: rgb(255, 255, 255);
- margin: 20px;
+ margin: 20px 10px;
 }
 .admin-content-div {
- max-width: 1400px;
+ max-width: 1600px;
  margin: 0 auto;
 }
 </style>

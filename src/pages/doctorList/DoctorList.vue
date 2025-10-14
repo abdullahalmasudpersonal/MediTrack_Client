@@ -2,7 +2,7 @@
  <v-container>
   <div style="margin: 30px auto 30px auto">
    <div>
-    <v-row>
+    <!-- <v-row>
      <v-col cols="12" sm="6">
       <v-select
        v-model="filters.specialization"
@@ -30,7 +30,7 @@
      <v-col cols="12" sm="6">
       <v-text-field v-model="filters.name" label="Search Doctor Name"></v-text-field>
      </v-col>
-    </v-row>
+    </v-row> -->
    </div>
    <v-row>
     <v-col cols="12" sm="6" md="4" lg="3" v-for="n in 4" :key="n">
@@ -72,7 +72,7 @@ import { onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-
+const doctorStore = useDoctorStore()
 function goToDoctorProfile(id: string) {
  router.push({ name: 'doctorDetails', params: { id } })
 }
@@ -81,7 +81,6 @@ function goToAppointmentPage(id: string) {
 }
 
 const filters = ref({ specialization: '', name: '' })
-const doctorStore = useDoctorStore()
 const { allDoctor, loading } = storeToRefs(doctorStore)
 onMounted(async () => {
  await doctorStore.getAllDoctorStore(filters.value)

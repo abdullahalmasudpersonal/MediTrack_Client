@@ -6,6 +6,7 @@ interface User {
  email: string
  role: string
  status: string
+ created_at: string
 }
 interface MyProfile {
  name: string

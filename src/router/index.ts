@@ -77,7 +77,7 @@ const routes = [
    {
     path: 'create-doctor',
     name: 'create-doctor',
-    component: () => import('@/pages/admin/adminDoctor/CreateDoctor.vue'),
+    component: () => import('@/pages/admin/adminDoctor/createDoctor.vue'),
    },
    {
     path: 'patient-list',

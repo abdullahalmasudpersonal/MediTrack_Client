@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const baseApi = axios.create({
- // baseURL: 'http://127.0.0.1:8000/api/', // আপনার Django বা Node.js API URL
- baseURL: 'https://meditrack-backend-tdg6.onrender.com/api/', // আপনার Django বা Node.js API URL
+ baseURL: 'http://127.0.0.1:8000/api/', // আপনার Django বা Node.js API URL
+ // baseURL: 'https://meditrack-backend-tdg6.onrender.com/api/', // আপনার Django বা Node.js API URL
  // withCredentials: true,
  timeout: 10000,
  headers: {

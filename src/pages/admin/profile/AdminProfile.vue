@@ -20,77 +20,46 @@
    </div>
   </div>
   <!--  -->
-  <div class="admin-bio">
-   <h3 style="margin-bottom: 5px">Bio</h3>
-   <p
-    style="
-     font-size: 16px;
-     font-weight: 600;
-     background-color: gray;
-     padding: 10px;
-     border-radius: 5px;
-    "
-   >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut ex debitis eligendi earum, fugit
-    tenetur laudantium mollitia incidunt, dolores fuga eum in sapiente cumque a! Consequuntur,
-    ratione velit! Ut, quibusdam. fugit tenetur laudantium mollitia incidunt, dolores fuga eum in
-    sapiente cumque a! Consequuntur, ratione velit! Ut, quibusdam.
-   </p>
-  </div>
-  <!--  -->
-  <div class="admin-profile-data">
-   <h3 style="margin-bottom: 5px">About</h3>
+  <v-card class="pa-6" color="#002B50">
+   <v-card-title class="text-h6 text-white mb-4" style="padding-left: 0; font-weight: bold">
+    Personal Information
+   </v-card-title>
    <v-row>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="Name"
-      :model-value="myProfile?.name"
-      variant="underlined"
-      readonly
-     ></v-text-field>
+    <!-- ✅ Left Column -->
+    <v-col cols="12" md="6">
+     <v-row class="text-white">
+      <v-col cols="6" class="font-weight-bold">Name</v-col>
+      <v-col cols="6">{{ myProfile?.name }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Email</v-col>
+      <v-col cols="6">{{ myProfile?.user?.email }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Address</v-col>
+      <v-col cols="6">{{ myProfile?.address }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Role</v-col>
+      <v-col cols="6">{{ myProfile?.user?.role }}</v-col>
+     </v-row>
     </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="Email"
-      :model-value="myProfile?.user?.email"
-      variant="underlined"
-      readonly
-     ></v-text-field>
-    </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="UserId"
-      :model-value="myProfile?.user?.userId"
-      variant="underlined"
-      readonly
-     ></v-text-field>
-    </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="Status"
-      :model-value="myProfile?.user?.status"
-      variant="underlined"
-      readonly
-     ></v-text-field>
-    </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="Phone"
-      :model-value="myProfile?.phone_number"
-      variant="underlined"
-      readonly
-     ></v-text-field>
-    </v-col>
-    <v-col cols="12" sm="6">
-     <v-text-field
-      label="Address"
-      :model-value="myProfile?.address"
-      variant="underlined"
-      readonly
-     ></v-text-field>
+
+    <!-- ✅ Right Column -->
+    <v-col cols="12" md="6">
+     <v-row class="text-white">
+      <v-col cols="6" class="font-weight-bold">UserId</v-col>
+      <v-col cols="6">{{ myProfile?.user?.userId }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Contact</v-col>
+      <v-col cols="6">{{ myProfile?.phone_number }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Status</v-col>
+      <v-col cols="6">{{ myProfile?.user?.status }}</v-col>
+
+      <v-col cols="6" class="font-weight-bold">Join</v-col>
+      <v-col cols="6">{{ myProfile?.user?.created_at }}</v-col>
+     </v-row>
     </v-col>
    </v-row>
-  </div>
+  </v-card>
  </div>
 </template>
 
@@ -111,10 +80,14 @@ onMounted(async () => {
 .admin-profile-top-part-div1 {
  height: 250px;
  border-radius: 5px 5px 0px 0px;
- /* background: linear-gradient(-45deg, #492586, #3e1e88, #644e8a, #442d6d); */
- background: linear-gradient(-45deg, #673ab7, #512da8, #9575cd, #311b92);
- background-size: 400% 400%;
- animation: gradientShift 20s ease infinite;
+ /* background: linear-gradient(-45deg, #673ab7, #512da8, #604c83, #311b92); */
+ /* background-size: 400% 400%; */
+ /* animation: gradientShift 20s ease infinite; */
+ background-image: url('../../../assets/image/profile/coverPhoto.jpg');
+ background-position: center;
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-color: #1a237e;
 }
 @keyframes gradientShift {
  0% {
@@ -129,10 +102,9 @@ onMounted(async () => {
 }
 .admin-profile-top-part-div2 {
  height: 100px;
- background: linear-gradient(-45deg, #673ab7, #512da8, #9575cd, #311b92);
+ background: linear-gradient(-45deg, #442579, #3e1b91, #331d57, #311b92);
  animation: gradientShift 20s ease infinite;
  background-size: 400% 400%;
- /* background-blend-mode: screen, overlay; */
  border-radius: 0px 0px 5px 5px;
  padding: 0 10px 15px 25px;
  display: flex;
@@ -177,21 +149,13 @@ onMounted(async () => {
   margin-left: auto;
  }
 }
-/* admin-about */
-.admin-bio {
- min-height: 100px;
- max-width: 690px;
- background-color: rgb(59, 59, 94);
- border-radius: 5px;
- padding: 15px;
+.v-card {
+ border-radius: 12px;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+ background-color: #241855 !important;
 }
-/* admin-profile-data */
-.admin-profile-data {
- min-height: 200px;
- max-width: 690px;
- background-color: rgb(73, 73, 90);
- border-radius: 5px;
- padding: 10px 15px;
- margin-top: 20px;
+
+.font-weight-bold {
+ color: #a7c7e7;
 }
 </style>
