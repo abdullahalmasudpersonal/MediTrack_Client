@@ -10,9 +10,9 @@
    <PatientSidebar />
   </v-navigation-drawer>
   <v-main>
+   <PatientDashboardNavber @toggle-drawer="drawer = !drawer" />
    <div class="patient-content">
     <div class="patient-content-div">
-     <PatientDashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>

@@ -151,7 +151,7 @@ onMounted(async () => {
 }
 .doctor-profile-top-part-div2 {
  height: 100px;
- background: linear-gradient(-45deg, #673ab7, #512da8, #9575cd, #311b92);
+ background: linear-gradient(-45deg, #442579, #3e1b91, #331d57, #311b92);
  animation: gradientShift 20s ease infinite;
  background-size: 400% 400%;
  border-radius: 0px 0px 5px 5px;
@@ -198,21 +198,13 @@ onMounted(async () => {
   margin-left: auto;
  }
 }
-/* doctor-about */
-.doctor-bio {
- min-height: 100px;
- max-width: 690px;
- background-color: rgb(59, 59, 94);
- border-radius: 5px;
- padding: 15px;
+.v-card {
+ border-radius: 12px;
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+ background-color: #241855 !important;
 }
-/* doctor-profile-data */
-.doctor-profile-data {
- min-height: 200px;
- max-width: 690px;
- background-color: rgb(73, 73, 90);
- border-radius: 5px;
- padding: 10px 15px;
- margin-top: 20px;
+
+.font-weight-bold {
+ color: #a7c7e7;
 }
 </style>
