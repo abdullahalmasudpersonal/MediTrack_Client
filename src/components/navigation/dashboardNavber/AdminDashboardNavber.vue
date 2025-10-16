@@ -121,10 +121,3 @@ onMounted(async () => {
  padding: 10px 15px;
 }
 </style>
-<!-- <v-btn class="mr-4" @click="logout">Logout</v-btn>
-   <v-img
-    style="cursor: pointer"
-    src="https://demos.pixinvent.com/vuexy-html-admin-template/assets/img/avatars/1.png"
-    width="40"
-    class="rounded-circle"
-   /> -->

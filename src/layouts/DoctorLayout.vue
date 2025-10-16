@@ -10,19 +10,13 @@
    <DoctorSidebar />
   </v-navigation-drawer>
   <v-main>
+   <DoctorDashboardNavber @toggle-drawer="drawer = !drawer" />
    <div class="doctor-content">
     <div class="doctor-content-div">
-     <DoctorDashboardNavber @toggle-drawer="drawer = !drawer" />
      <router-view />
     </div>
    </div>
   </v-main>
-  <!-- <div class="doctor-layout">
-   <DoctorSidebar />
-   <div class="doctor-content">
-    <router-view />
-   </div>
-  </div> -->
  </v-app>
 </template>
 
@@ -61,10 +55,10 @@ onBeforeUnmount(() => {
 }
 .doctor-content {
  color: rgb(255, 255, 255);
- margin: 20px;
+ margin: 20px 10px;
 }
 .doctor-content-div {
- max-width: 1400px;
+ max-width: 1600px;
  margin: 0 auto;
 }
 </style>

@@ -106,12 +106,13 @@ onMounted(async () => {
 <style scoped>
 .doctor-navber {
  position: sticky;
- top: 20px;
+ top: 0px;
  height: 60px;
- background: linear-gradient(-45deg, #523486, #4b1cb8, #57309b, #331ba0);
+ color: rgb(255, 255, 255);
+ background: linear-gradient(-45deg, #673ab7, #512da8, #654799, #311b92);
  z-index: 10;
- border-radius: 5px;
- margin-bottom: 30px;
+ /* border-radius: 5px; */
+ /* margin-bottom: 30px; */
  display: flex;
  align-items: center;
  justify-content: space-between;
