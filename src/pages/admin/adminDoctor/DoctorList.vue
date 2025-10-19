@@ -25,7 +25,7 @@ const headers = [
  { title: 'Hospital', key: 'hospital_affiliation' },
  { title: 'Fees', key: 'fees' },
  { title: 'Join', key: 'user.created_at' },
- { title: 'Actions', key: 'actions', sortable: false },
+//  { title: 'Actions', key: 'actions', sortable: false },
 ]
 
 const fetchDoctors = async () => {
