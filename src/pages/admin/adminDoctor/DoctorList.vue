@@ -1,5 +1,14 @@
 <template>
- <v-data-table :loading="loading" :headers="headers" :items="allDoctor || []" :items-per-page="5">
+ <v-data-table :loading="loading" :headers="headers" :items="allDoctor || []" :items-per-page="10">
+  <template v-slot:[`item.name`]="{ item }">
+  <div style="display: flex; align-items: center;">
+    <v-avatar size="40" style="border: 1px solid gray;">
+      <v-img :src="item.photo" alt="Doctor Photo"  />
+    </v-avatar>
+    <span style="margin-left: 5px;">{{ item.name }}</span>
+  </div>
+</template>
+
  </v-data-table>
 </template>
 
@@ -33,11 +42,6 @@ const fetchDoctors = async () => {
 }
 
 onMounted(fetchDoctors)
-
-// const viewDoctor = (doctor: any) => {
-//  console.log('View doctor:', doctor)
-//  // এখানে তুমি ডিটেইলস ডায়লগ বা রাউট করতে পারো
-// }
 </script>
 
 <style scoped>
@@ -45,7 +49,10 @@ onMounted(fetchDoctors)
  overflow-x: auto;
 }
 </style>
-
+<!-- // const viewDoctor = (doctor: any) => {
+//  console.log('View doctor:', doctor)
+//  // এখানে তুমি ডিটেইলস ডায়লগ বা রাউট করতে পারো
+// } -->
 <!-- <v-row class="mb-4" align="center">
   <v-col cols="12" sm="5" md="4">
    <v-text-field
