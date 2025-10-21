@@ -1,14 +1,17 @@
 <template>
  <v-data-table :loading="loading" :headers="headers" :items="allDoctor || []" :items-per-page="10">
   <template v-slot:[`item.name`]="{ item }">
-  <div style="display: flex; align-items: center;">
-    <v-avatar size="40" style="border: 1px solid gray;">
-      <v-img :src="item.photo" alt="Doctor Photo"  />
+   <div style="display: flex; align-items: center">
+    <v-avatar size="40" style="border: 1px solid gray">
+     <v-img :src="item.photo" alt="Doctor Photo" />
     </v-avatar>
-    <span style="margin-left: 5px;">{{ item.name }}</span>
-  </div>
-</template>
+    <span style="margin-left: 5px">{{ item.name }}</span>
+   </div>
+  </template>
 
+  <template v-slot:[`item.user.created_at`]="{ item }">
+   {{ formatDate(item.user.created_at) }}
+  </template>
  </v-data-table>
 </template>
 
@@ -16,6 +19,7 @@
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
+import { formatDate } from '@/components/shared/formatDate'
 
 const doctorStore = useDoctorStore()
 const { allDoctor, loading } = storeToRefs(doctorStore)
@@ -34,7 +38,7 @@ const headers = [
  { title: 'Hospital', key: 'hospital_affiliation' },
  { title: 'Fees', key: 'fees' },
  { title: 'Join', key: 'user.created_at' },
-//  { title: 'Actions', key: 'actions', sortable: false },
+ //  { title: 'Actions', key: 'actions', sortable: false },
 ]
 
 const fetchDoctors = async () => {
