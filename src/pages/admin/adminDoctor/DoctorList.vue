@@ -52,6 +52,10 @@ onMounted(fetchDoctors)
 .v-data-table {
  overflow-x: auto;
 }
+.v-data-table th,
+.v-data-table td {
+ text-align: center !important;
+}
 </style>
 <!-- // const viewDoctor = (doctor: any) => {
 //  console.log('View doctor:', doctor)
