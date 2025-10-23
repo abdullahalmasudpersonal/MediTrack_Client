@@ -1,5 +1,11 @@
 <template>
- <v-data-table :loading="loading" :headers="headers" :items="allDoctor || []" :items-per-page="10">
+ <v-data-table
+  :loading="loading"
+  :headers="headers"
+  :items="allDoctor || []"
+  :items-per-page="10"
+  class="text-center"
+ >
   <template v-slot:[`item.name`]="{ item }">
    <div style="display: flex; align-items: center">
     <v-avatar size="40" style="border: 1px solid gray">
@@ -31,15 +37,14 @@ const filters = ref({
 
 const headers = [
  { title: 'Name', key: 'name' },
- { title: 'Email', key: 'user.email' },
- { title: 'Phone', key: 'phone_number' },
- { title: 'Specialization', key: 'specialization' },
- { title: 'Experience', key: 'experience_years' },
- { title: 'Hospital', key: 'hospital_affiliation' },
- { title: 'Fees', key: 'fees' },
- { title: 'Join', key: 'user.created_at' },
- //  { title: 'Actions', key: 'actions', sortable: false },
-]
+ { title: 'Email', key: 'user.email', align: 'center' },
+ { title: 'Phone', key: 'phone_number', align: 'center' },
+ { title: 'Specialization', key: 'specialization', align: 'center' },
+ { title: 'Experience', key: 'experience_years', align: 'center' },
+ { title: 'Hospital', key: 'hospital_affiliation', align: 'center' },
+ { title: 'Fees', key: 'fees', align: 'center' },
+ { title: 'Join', key: 'user.created_at', align: 'center' },
+] as const
 
 const fetchDoctors = async () => {
  await doctorStore.getAllDoctorStore(filters.value)
@@ -48,37 +53,4 @@ const fetchDoctors = async () => {
 onMounted(fetchDoctors)
 </script>
 
-<style scoped>
-.v-data-table {
- overflow-x: auto;
-}
-.v-data-table th,
-.v-data-table td {
- text-align: center !important;
-}
-</style>
-<!-- // const viewDoctor = (doctor: any) => {
-//  console.log('View doctor:', doctor)
-//  // এখানে তুমি ডিটেইলস ডায়লগ বা রাউট করতে পারো
-// } -->
-<!-- <v-row class="mb-4" align="center">
-  <v-col cols="12" sm="5" md="4">
-   <v-text-field
-    v-model="filters.name"
-    label="Search by Name"
-    variant="outlined"
-    clearable
-    @input="fetchDoctors"
-   />
-  </v-col>
-
-  <v-col cols="12" sm="5" md="4">
-   <v-text-field
-    v-model="filters.specialization"
-    label="Filter by Specialization"
-    variant="outlined"
-    clearable
-    @input="fetchDoctors"
-   />
-  </v-col>
- </v-row> -->
+<style scoped></style>
