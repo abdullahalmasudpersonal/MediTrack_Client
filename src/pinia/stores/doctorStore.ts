@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { doctorApi } from '../features/doctorApi/DoctorApi'
 
-interface User {
+export interface TUser {
  id: string
  userId: string
  email: string
@@ -17,7 +17,7 @@ interface Availability {
 
 export interface TGetDoctor {
  id: string
- user: User
+ user: TUser
  name: string
  phone_number: string
  gender: 'male' | 'female' | 'other'
@@ -75,7 +75,7 @@ export const useDoctorStore = defineStore('doctor', {
    try {
     const data = await doctorApi.getAllDoctor(filters)
     this.allDoctor = data.data
-    // console.log(data, 'data')
+    console.log(data, 'data')
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
@@ -109,6 +109,19 @@ export const useDoctorStore = defineStore('doctor', {
    } catch (err: any) {
     this.error = err.response?.data?.message || 'Failed to create doctor'
     return err.response?.data
+   } finally {
+    this.loading = false
+   }
+  },
+  async updateDoctorStatusStore(user_id: string, status: string) {
+   console.log(status, 'new status', user_id, 'id')
+   try {
+    const data = await doctorApi.updateDoctorStatus(user_id, status)
+
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    console.error('Failed to update doctor status:', err)
    } finally {
     this.loading = false
    }

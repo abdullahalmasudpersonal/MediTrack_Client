@@ -27,6 +27,7 @@
      false-value="inactive"
      true-value="active"
      hide-details
+     @change="toggleDoctorStatus(item)"
     ></v-switch>
    </div>
   </template>
@@ -36,7 +37,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useDoctorStore } from '@/pinia/stores/doctorStore'
+import { useDoctorStore, type TGetDoctor } from '@/pinia/stores/doctorStore'
 import { formatDate } from '@/components/shared/formatDate'
 
 const doctorStore = useDoctorStore()
@@ -60,8 +61,13 @@ const headers = [
 const fetchDoctors = async () => {
  await doctorStore.getAllDoctorStore(filters.value)
 }
-
 onMounted(fetchDoctors)
+
+const toggleDoctorStatus = async (item: TGetDoctor) => {
+ const newStatus = item.user.status
+ // console.log(newStatus, 'new status', item.user.id, 'id')
+ await doctorStore.updateDoctorStatusStore(item.user.id, newStatus)
+}
 </script>
 
 <style scoped></style>
