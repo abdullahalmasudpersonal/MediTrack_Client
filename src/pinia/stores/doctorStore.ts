@@ -75,7 +75,6 @@ export const useDoctorStore = defineStore('doctor', {
    try {
     const data = await doctorApi.getAllDoctor(filters)
     this.allDoctor = data.data
-    console.log(data, 'data')
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
@@ -113,11 +112,9 @@ export const useDoctorStore = defineStore('doctor', {
     this.loading = false
    }
   },
-  async updateDoctorStatusStore(user_id: string, status: string) {
-   console.log(status, 'new status', user_id, 'id')
+  async updateDoctorStatusStore(user_id: string, payload: { status: string }) {
    try {
-    const data = await doctorApi.updateDoctorStatus(user_id, status)
-
+    const data = await doctorApi.updateDoctorStatus(user_id, payload)
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {

@@ -65,8 +65,7 @@ onMounted(fetchDoctors)
 
 const toggleDoctorStatus = async (item: TGetDoctor) => {
  const newStatus = item.user.status
- // console.log(newStatus, 'new status', item.user.id, 'id')
- await doctorStore.updateDoctorStatusStore(item.user.id, newStatus)
+ await doctorStore.updateDoctorStatusStore(item.user.id, { status: newStatus })
 }
 </script>
 

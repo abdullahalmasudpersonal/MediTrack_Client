@@ -14,9 +14,8 @@ export const doctorApi = {
   const res = await baseApi.post(`/user/create_doctor/`, payload)
   return res.data
  },
- updateDoctorStatus: async (user_id: string, status: string) => {
-  console.log(user_id, 'user_ids', status, 'stuats datas')
-  const res = await baseApi.patch(`/doctor/update-doctor-status/${user_id}/`, status)
+ updateDoctorStatus: async (user_id: string, payload: { status: string }) => {
+  const res = await baseApi.patch(`/doctor/update-doctor-status/${user_id}/`, payload)
   return res.data
  },
 }
