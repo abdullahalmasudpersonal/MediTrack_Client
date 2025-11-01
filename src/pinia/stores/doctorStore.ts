@@ -88,7 +88,8 @@ export const useDoctorStore = defineStore('doctor', {
    this.loading = true
    try {
     const data = await doctorApi.getSingleDoctor(id)
-    this.singleDoctor = data
+    this.singleDoctor = data.data
+    // console.log(data, 'data')
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {

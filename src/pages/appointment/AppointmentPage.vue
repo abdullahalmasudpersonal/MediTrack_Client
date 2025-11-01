@@ -108,6 +108,7 @@
 <script setup lang="ts">
 import { useAppointmentStore } from '@/pinia/stores/appointmentStore'
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
+import { useScheduleStore } from '@/pinia/stores/scheduleStore'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -125,21 +126,6 @@ const rules = {
 }
 const formValid = ref(false)
 const formRef = ref()
-
-// interface FormData {
-//  patient_name: string
-//  email: string
-//  gender: string
-//  phone_number: string
-//  specialization: string
-//  consultation_type: string
-//  status: string
-//  payment_status: string
-//  notes: string
-//  appointment_date: string
-//  appointment_time: string
-//  doctor: string
-// }
 
 const form = ref({
  patient_name: '',
@@ -162,12 +148,22 @@ const { singleDoctor } = storeToRefs(doctorStore)
 onMounted(async () => {
  const doctorId = route.params.id as string
  await doctorStore.getSingleDoctorStore(doctorId)
+ console.log(singleDoctor, 'doctor')
  if (singleDoctor.value) {
   doctorName.value = singleDoctor.value.name
   form.value.doctor = singleDoctor.value.id
   form.value.specialization = singleDoctor.value.specialization
  }
 })
+
+////////////////////////////////////////////////
+const date = '2025-10-28'
+const scheduleStore = useScheduleStore()
+onMounted(async () => {
+ const res = scheduleStore.getScheduleStore('a3b977478eab4181a1a4dd0617e87b49', new Date(date))
+ console.log(res, 'schedules')
+})
+////////////////////////////////////////////////
 
 ////////// Appointment submit form ////////////////
 const appointmentStore = useAppointmentStore()
