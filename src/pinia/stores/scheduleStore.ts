@@ -11,14 +11,17 @@ export enum WEEKDAYS {
  Sunday = 6,
 }
 
+export interface Slot {
+ start_time: string // "09:00" এর মতো string, Date নয়
+ end_time: string // "09:10" এর মতো string, Date নয়
+ is_booked: boolean
+}
+
 export interface Schedule {
- id: string
- doctor: string // or Doctor type if you have one
+ doctor: string
+ date: string
  weekday: WEEKDAYS
- start_time: string // "09:00:00"
- end_time: string // "17:00:00"
- slot_duration: number
- is_active: boolean
+ slots: Slot[]
 }
 
 export const useScheduleStore = defineStore('schedule', {
