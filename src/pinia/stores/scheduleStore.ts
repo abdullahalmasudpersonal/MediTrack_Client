@@ -50,5 +50,8 @@ export const useScheduleStore = defineStore('schedule', {
     this.loading = false
    }
   },
+  clearSchedules() {
+   this.schedules = null
+  },
  },
 })

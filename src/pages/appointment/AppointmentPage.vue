@@ -8,33 +8,30 @@
       <v-form ref="formRef" v-model="formValid" @submit.prevent="submitForm">
        <v-row dense>
         <v-col cols="12" md="6">
-         <template v-if="loadingDoctor">
+         <!-- <template v-if="loadingDoctor">
           <v-skeleton-loader type="text"></v-skeleton-loader>
-         </template>
-         <template v-else>
-          <v-text-field
-           v-model="doctorName"
-           disabled
-           label="Doctor"
-           :rules="[rules.required]"
-           dense
-          />
-         </template>
+         </template> -->
+         <!-- <template v-else> -->
+         <v-text-field
+          v-model="doctorName"
+          label="Doctor"
+          :rules="[rules.required]"
+          dense
+          disabled
+          :loading="loadingDoctor"
+         />
+         <!-- </template> -->
         </v-col>
         <v-col cols="12" md="6">
-         <template v-if="loadingDoctor">
-          <v-skeleton-loader type="text"></v-skeleton-loader>
-         </template>
-         <template v-else>
-          <v-text-field
-           v-model="form.specialization"
-           disabled
-           label="Specialization"
-           :rules="[rules.required]"
-           dense
-           class="specialization_capitalize_text"
-          />
-         </template>
+         <v-text-field
+          v-model="form.specialization"
+          disabled
+          label="Specialization"
+          :rules="[rules.required]"
+          dense
+          class="specialization_capitalize_text"
+          :loading="loadingDoctor"
+         />
         </v-col>
         <v-col cols="12">
          <v-text-field
@@ -97,9 +94,11 @@
           dense
           outlined
           clearable
+          :disabled="loadingSchedule"
+          :loading="loadingSchedule"
          />
+         <!-- </template> -->
         </v-col>
-
         <v-col cols="12">
          <v-textarea
           v-model="form.notes"
@@ -121,6 +120,7 @@
 </template>
 
 <script setup lang="ts">
+import { useAppointmentStore } from '@/pinia/stores/appointmentStore'
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { useScheduleStore } from '@/pinia/stores/scheduleStore'
 import { storeToRefs } from 'pinia'
@@ -131,6 +131,8 @@ import { useRoute } from 'vue-router'
 const formValid = ref(false)
 const route = useRoute()
 const loadingDoctor = ref(true)
+const loadingSchedule = ref(false)
+const formRef = ref()
 
 const rules = {
  required: (v: string) => !!v || 'This field is required',
@@ -155,6 +157,8 @@ const form = ref({
  notes: '',
  appointment_date: '',
  appointment_time: '',
+ appointment_start_time: '',
+ appointment_end_time: '',
 })
 
 ///////////// Load doctor data ///////////
@@ -183,9 +187,21 @@ const scheduleStore = useScheduleStore()
 watch(
  () => form.value.appointment_date,
  async (newDate) => {
-  if (!newDate || !singleDoctor.value) return
+  if (!newDate || !singleDoctor.value) {
+   scheduleStore.clearSchedules()
+   return
+  }
+  loadingSchedule.value = true
+  scheduleStore.clearSchedules()
   const doctorId = singleDoctor.value.id // ✅ doctorId from store
-  await scheduleStore.getScheduleStore(doctorId, new Date(newDate))
+  try {
+   await scheduleStore.getScheduleStore(doctorId, new Date(newDate))
+  } catch (error) {
+   console.error('Failed to load schedule:', error)
+  } finally {
+   // ✅ লোডিং শেষ
+   loadingSchedule.value = false
+  }
  },
 )
 const { schedules } = storeToRefs(scheduleStore)
@@ -197,36 +213,49 @@ const availableSlots = computed(() => {
   .map((slot) => `${slot.start_time} - ${slot.end_time}`)
 })
 
+watch(
+ () => form.value.appointment_time,
+ (val) => {
+  if (!val) {
+   form.value.appointment_start_time = ''
+   form.value.appointment_end_time = ''
+   return
+  }
+  const [start, end] = val.split(' - ')
+  form.value.appointment_start_time = start
+  form.value.appointment_end_time = end
+ },
+)
+
 ////////// Appointment submit form ////////////////
-// const appointmentStore = useAppointmentStore()
-// // const { appointment, loading, error } = storeToRefs(appointmentStore)
-// const snackbar = ref({
-//  show: false,
-//  message: '',
-//  color: 'success', // or 'error'
-// })
+const appointmentStore = useAppointmentStore()
+// const { appointment, loading, error } = storeToRefs(appointmentStore)
+const snackbar = ref({
+ show: false,
+ message: '',
+ color: 'success', // or 'error'
+})
 
 const submitForm = async () => {
- // if (!formValid.value) return
- // try {
- //  const response = await appointmentStore.createAppointmentStore(form.value)
- //  if (response?.data) {
- //   formRef.value?.reset()
- //   snackbar.value = {
- //    show: true,
- //    message: 'Appointment created successfully!',
- //    color: 'success',
- //   }
- //  }
- //  // toast.success('Appointment created successfully!')
- // } catch (error) {
- //  console.error('Error creating appointment:', error)
- //  snackbar.value = {
- //   show: true,
- //   message: 'Something went wrong!',
- //   color: 'error',
- //  }
- // }
+ if (!formValid.value) return
+ try {
+  const response = await appointmentStore.createAppointmentStore(form.value)
+  if (response?.data) {
+   formRef.value?.reset()
+   snackbar.value = {
+    show: true,
+    message: 'Appointment created successfully!',
+    color: 'success',
+   }
+  }
+ } catch (error) {
+  console.error('Error creating appointment:', error)
+  snackbar.value = {
+   show: true,
+   message: 'Something went wrong!',
+   color: 'error',
+  }
+ }
 }
 </script>
 
