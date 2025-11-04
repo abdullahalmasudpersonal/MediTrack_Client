@@ -97,7 +97,6 @@
           :disabled="loadingSchedule"
           :loading="loadingSchedule"
          />
-         <!-- </template> -->
         </v-col>
         <v-col cols="12">
          <v-textarea
