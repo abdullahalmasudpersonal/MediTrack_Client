@@ -109,7 +109,9 @@
          />
         </v-col>
        </v-row>
-       <v-btn type="submit" color="primary" block class="mt-4"> Submit </v-btn>
+       <v-btn type="submit" color="primary" block class="mt-4" :loading="submitLoading">
+        Submit
+       </v-btn>
       </v-form>
      </v-card-text>
     </v-card>
@@ -237,12 +239,12 @@ const snackbar = ref({
 })
 
 const submitForm = async () => {
- submitLoading.value = true
  if (!formValid.value) return
+ submitLoading.value = true
  try {
   const response = await appointmentStore.createAppointmentStore(form.value)
-  console.log(response, 'ressss')
-  if (response?.data) {
+  // console.log(response, 'ressss')
+  if (response?.success) {
    formRef.value?.reset()
    snackbar.value = {
     show: true,

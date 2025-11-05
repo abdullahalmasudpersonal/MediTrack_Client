@@ -51,7 +51,7 @@ const menuItems = [
  {
   title: 'Appointment',
   icon: 'mdi-account-injury-outline',
-  to: '/admin/patient-list',
+  to: '/patient/patient-appointment',
  },
 ]
 </script>
