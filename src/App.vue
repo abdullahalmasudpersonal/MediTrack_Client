@@ -1,12 +1,36 @@
 <script setup lang="ts">
 import 'aos/dist/aos.css'
+import { useSnackbarStore } from '@/pinia/stores/snackbarStore'
+import { storeToRefs } from 'pinia'
+
+const snackbarStore = useSnackbarStore()
+const snackbar = storeToRefs(snackbarStore)
 </script>
 
 <template>
  <div id="app">
-  <router-view> </router-view>
+  <!-- তোমার মূল রাউটার ভিউ -->
+  <router-view />
+
+  <!-- ✅ Global Snackbar -->
+  <v-snackbar
+   v-model="snackbar.show.value"
+   :color="snackbar.color.value"
+   :timeout="snackbar.timeout.value"
+   location="top right"
+   elevation="4"
+  >
+   {{ snackbar.message }}
+  </v-snackbar>
  </div>
 </template>
+
+<style scoped>
+#app {
+ min-height: 100vh;
+ background-color: #fafafa;
+}
+</style>
 
 <!-- <script setup lang="ts">
 import { computed } from 'vue'

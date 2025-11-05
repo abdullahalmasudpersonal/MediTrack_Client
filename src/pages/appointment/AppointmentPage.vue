@@ -8,10 +8,6 @@
       <v-form ref="formRef" v-model="formValid" @submit.prevent="submitForm">
        <v-row dense>
         <v-col cols="12" md="6">
-         <!-- <template v-if="loadingDoctor">
-          <v-skeleton-loader type="text"></v-skeleton-loader>
-         </template> -->
-         <!-- <template v-else> -->
          <v-text-field
           v-model="doctorName"
           label="Doctor"
@@ -117,6 +113,24 @@
     </v-card>
    </v-col>
   </v-row>
+  <!-- <v-snackbar
+   v-model="scheduleStore.show"
+   :color="scheduleStore.color"
+   timeout="3000"
+   location="top right"
+   elevation="4"
+  >
+   {{ scheduleStore.message }}
+  </v-snackbar> -->
+  <v-snackbar
+   v-model="snackbarStore.show"
+   :color="snackbarStore.color"
+   timeout="3000"
+   location="top right"
+   elevation="4"
+  >
+   {{ snackbarStore.message }}
+  </v-snackbar>
  </v-container>
 </template>
 
@@ -124,13 +138,15 @@
 import { useAppointmentStore } from '@/pinia/stores/appointmentStore'
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { useScheduleStore } from '@/pinia/stores/scheduleStore'
+import { useSnackbarStore } from '@/pinia/stores/snackbarStore'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, watch } from 'vue'
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const formValid = ref(false)
 const route = useRoute()
+const router = useRouter()
 const loadingDoctor = ref(true)
 const loadingSchedule = ref(false)
 const formRef = ref()
@@ -231,34 +247,23 @@ watch(
 ////////// Appointment submit form ////////////////
 const submitLoading = ref(false)
 const appointmentStore = useAppointmentStore()
-// const { appointment, loading, error } = storeToRefs(appointmentStore)
-const snackbar = ref({
- show: false,
- message: '',
- color: 'success', // or 'error'
-})
+const snackbarStore = useSnackbarStore()
 
 const submitForm = async () => {
  if (!formValid.value) return
  submitLoading.value = true
  try {
   const response = await appointmentStore.createAppointmentStore(form.value)
-  // console.log(response, 'ressss')
   if (response?.success) {
-   formRef.value?.reset()
-   snackbar.value = {
-    show: true,
-    message: 'Appointment created successfully!',
-    color: 'success',
-   }
+   snackbarStore.showMessage('Appointment created successfully!', 'success')
+   router.push('/patient/patient-appointment')
+  } else {
+   snackbarStore.showMessage(response?.message || 'Failed to create appointment!', 'error')
   }
- } catch (error) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+ } catch (error: any) {
   console.error('Error creating appointment:', error)
-  snackbar.value = {
-   show: true,
-   message: 'Something went wrong!',
-   color: 'error',
-  }
+  snackbarStore.showMessage(error.response?.data?.message || 'Something went wrong!', 'error')
  } finally {
   submitLoading.value = false
  }
