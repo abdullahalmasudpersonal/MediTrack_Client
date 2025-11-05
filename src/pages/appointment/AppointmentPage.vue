@@ -227,6 +227,7 @@ watch(
 )
 
 ////////// Appointment submit form ////////////////
+const submitLoading = ref(false)
 const appointmentStore = useAppointmentStore()
 // const { appointment, loading, error } = storeToRefs(appointmentStore)
 const snackbar = ref({
@@ -236,9 +237,11 @@ const snackbar = ref({
 })
 
 const submitForm = async () => {
+ submitLoading.value = true
  if (!formValid.value) return
  try {
   const response = await appointmentStore.createAppointmentStore(form.value)
+  console.log(response, 'ressss')
   if (response?.data) {
    formRef.value?.reset()
    snackbar.value = {
@@ -254,6 +257,8 @@ const submitForm = async () => {
    message: 'Something went wrong!',
    color: 'error',
   }
+ } finally {
+  submitLoading.value = false
  }
 }
 </script>
