@@ -1,0 +1,23 @@
+<template>
+ <!-- <div>Doctor id: {{ singleDoctorforAdmin?.user.id }}</div> -->
+ <div>Doctor name: {{ singleDoctor?.name }}</div>
+</template>
+
+<script setup lang="ts">
+import { useDoctorStore } from '@/pinia/stores/doctorStore'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const doctorId = route.params.id
+const doctorStore = useDoctorStore()
+const { singleDoctorforAdmin: singleDoctor } = storeToRefs(doctorStore)
+
+const fetchSingleDoctor = async () => {
+ await doctorStore.getSingleDoctorForAdminStore(doctorId as string)
+}
+onMounted(fetchSingleDoctor)
+</script>
+
+<style scoped></style>

@@ -113,15 +113,6 @@
     </v-card>
    </v-col>
   </v-row>
-  <!-- <v-snackbar
-   v-model="scheduleStore.show"
-   :color="scheduleStore.color"
-   timeout="3000"
-   location="top right"
-   elevation="4"
-  >
-   {{ scheduleStore.message }}
-  </v-snackbar> -->
   <v-snackbar
    v-model="snackbarStore.show"
    :color="snackbarStore.color"

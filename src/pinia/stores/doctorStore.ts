@@ -57,13 +57,17 @@ export interface TCreateDoctor {
 export const useDoctorStore = defineStore('doctor', {
  state: (): {
   allDoctor: TGetDoctor[] | null
+  allDoctorForAdmin: TGetDoctor[] | null
   singleDoctor: TGetDoctor | null
+  singleDoctorforAdmin: TGetDoctor | null
   doctor: TCreateDoctor | null
   loading: boolean
   error: string | null
  } => ({
   allDoctor: [],
+  allDoctorForAdmin: [],
   singleDoctor: null,
+  singleDoctorforAdmin: null,
   doctor: null,
   loading: false,
   error: null as string | null,
@@ -84,12 +88,40 @@ export const useDoctorStore = defineStore('doctor', {
     this.loading = false
    }
   },
+  async getAllDoctorForAdminStore(filters?: { specialization?: string; name?: string }) {
+   this.loading = true
+   try {
+    const data = await doctorApi.getAllDoctorForAdmin(filters)
+    this.allDoctorForAdmin = data.data
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    this.error = err.response?.data?.message || 'Failed to load all doctor'
+    return err.response?.data
+   } finally {
+    this.loading = false
+   }
+  },
   async getSingleDoctorStore(id: string) {
    this.loading = true
    try {
     const data = await doctorApi.getSingleDoctor(id)
     this.singleDoctor = data.data
     // console.log(data, 'data')
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    this.error = err.response?.data?.message || 'Failed to load doctor profile'
+    // return err.response?.data
+   } finally {
+    this.loading = false
+   }
+  },
+  async getSingleDoctorForAdminStore(id: string) {
+   this.loading = true
+   try {
+    const data = await doctorApi.getSingleDoctorForAdmin(id)
+    this.singleDoctorforAdmin = data.data
     return data
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
