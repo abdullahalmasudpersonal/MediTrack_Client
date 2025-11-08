@@ -9,7 +9,7 @@
   <template v-slot:[`item.name`]="{ item }">
    <div style="display: flex; align-items: center">
     <v-avatar size="40" style="border: 1px solid gray">
-     <v-img :src="item.photo" alt="Doctor Photo" />
+     <v-img :src="item.photo || ''" alt="Doctor Photo" />
     </v-avatar>
     <span style="margin-left: 5px">{{ item.name }}</span>
    </div>
@@ -27,6 +27,7 @@
      false-value="inactive"
      true-value="active"
      hide-details
+     :loading="statusLoading[item.user.id] === true"
      @change="toggleDoctorStatus(item)"
     ></v-switch>
    </div>
@@ -78,9 +79,17 @@ const fetchDoctors = async () => {
 }
 onMounted(fetchDoctors)
 
+///////// Update doctor active status ///////////
+// const statusLoading = ref(false)
+const statusLoading = ref<Record<string, boolean>>({})
 const toggleDoctorStatus = async (item: TGetDoctor) => {
+ statusLoading.value[item.user.id] = true
  const newStatus = item.user.status
- await doctorStore.updateDoctorStatusStore(item.user.id, { status: newStatus })
+ try {
+  await doctorStore.updateDoctorStatusStore(item.user.id, { status: newStatus })
+ } finally {
+  statusLoading.value[item.user.id] = false
+ }
 }
 
 const navigateDoctorDetails = (item: TGetDoctor) => {

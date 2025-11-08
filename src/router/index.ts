@@ -62,7 +62,17 @@ const routes = [
    {
     path: '',
     name: 'admin-dashboard',
-    component: () => import('@/pages/admin/dashboard/AdminDashboard.vue'),
+    component: () => import('@/pages/admin/dashboard/DashboardPage.vue'),
+   },
+   {
+    path: 'appointment-list',
+    name: 'admin-appointment',
+    component: () => import('@/pages/admin/appointment/AppointmentPage.vue'),
+   },
+   {
+    path: 'schedule',
+    name: 'admin-schedule',
+    component: () => import('@/pages/admin/schedule/SchedulePage.vue'),
    },
    {
     path: 'users',
@@ -72,22 +82,22 @@ const routes = [
    {
     path: 'doctor-list',
     name: 'doctor-list',
-    component: () => import('@/pages/admin/adminDoctor/DoctorList.vue'),
+    component: () => import('@/pages/admin/doctor/DoctorList.vue'),
    },
    {
     path: 'doctor-details/:id',
     name: 'doctor-details',
-    component: () => import('@/pages/admin/adminDoctor/DoctorDetails.vue'),
+    component: () => import('@/pages/admin/doctor/DoctorDetails.vue'),
    },
    {
     path: 'create-doctor',
     name: 'create-doctor',
-    component: () => import('@/pages/admin/adminDoctor/createDoctors.vue'),
+    component: () => import('@/pages/admin/doctor/createDoctors.vue'),
    },
    {
     path: 'patient-list',
     name: 'patient-list',
-    component: () => import('@/pages/admin/adminPatient/PatientList.vue'),
+    component: () => import('@/pages/admin/patient/PatientList.vue'),
    },
    {
     path: 'admin-profile',

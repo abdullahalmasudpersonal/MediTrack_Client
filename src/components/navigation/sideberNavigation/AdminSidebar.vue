@@ -49,7 +49,41 @@ const menuItems = [
   to: '/admin',
  },
  {
+  title: 'Appointment',
+  icon: 'mdi-account-injury-outline',
+  children: [{ title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' }],
+ },
+ {
+  title: 'Schedule',
+  icon: 'mdi-account-injury-outline',
+  children: [{ title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' }],
+ },
+ {
   title: 'Doctor',
+  icon: 'mdi-doctor',
+  children: [
+   { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
+   { title: 'Create', icon: 'mdi-account-plus-outline', to: '/admin/create-doctor' },
+  ],
+ },
+ {
+  title: 'Payment',
+  icon: 'mdi-doctor',
+  children: [
+   { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
+   { title: 'Create', icon: 'mdi-account-plus-outline', to: '/admin/create-doctor' },
+  ],
+ },
+ {
+  title: 'Analytics & Insights',
+  icon: 'mdi-doctor',
+  children: [
+   { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
+   { title: 'Create', icon: 'mdi-account-plus-outline', to: '/admin/create-doctor' },
+  ],
+ },
+ {
+  title: 'Settings',
   icon: 'mdi-doctor',
   children: [
    { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
