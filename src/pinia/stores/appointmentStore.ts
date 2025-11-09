@@ -12,14 +12,17 @@ export interface Appointment {
  notes: string
  appointment_date: string
  appointment_time: string
+ created_at: string
 }
 export const useAppointmentStore = defineStore('appointment', {
  state: (): {
   appointment: Appointment | null
+  getAllAppointment: Appointment[] | null
   loading: boolean
   error: string | null
  } => ({
   appointment: null,
+  getAllAppointment: [],
   loading: false,
   error: null as string | null,
  }),
@@ -34,6 +37,19 @@ export const useAppointmentStore = defineStore('appointment', {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
    } catch (err: any) {
     this.error = err.response?.data?.message || "'Failed to create appointment'"
+   } finally {
+    this.loading = false
+   }
+  },
+  async getAllAppointmentStore() {
+   this.loading = true
+   try {
+    const data = await appointmentApi.getAllAppointment()
+    this.getAllAppointment = data.data
+    return data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch (err: any) {
+    this.error = err.response?.data?.message || "'Failed to get appointment'"
    } finally {
     this.loading = false
    }

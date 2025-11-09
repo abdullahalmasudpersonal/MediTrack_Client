@@ -6,4 +6,8 @@ export const appointmentApi = {
   const res = await baseApi.post('/appointment/create-appointment/', payload)
   return res.data
  },
+ getAllAppointment: async () => {
+  const res = await baseApi.get('/appointment/get-all-appointment/')
+  return res.data
+ },
 }
