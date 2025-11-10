@@ -53,6 +53,11 @@ const menuItems = [
   icon: 'mdi-account-injury-outline',
   to: '/patient/patient-appointment',
  },
+ {
+  title: 'Payment',
+  icon: 'mdi-account-injury-outline',
+  // to: '/patient/patient-appointments',
+ },
 ]
 </script>
 

@@ -156,7 +156,7 @@ const routes = [
    {
     path: 'patient-appointment',
     name: 'patient-appointment',
-    component: () => import('@/pages/patient/appointments/patientAppointments.vue'),
+    component: () => import('@/pages/patient/appointment/AppointmentPage.vue'),
    },
    {
     path: 'patient-payment',

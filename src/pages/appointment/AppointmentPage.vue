@@ -35,6 +35,7 @@
           label="Patient Name"
           :rules="[rules.required]"
           dense
+          :loading="profileLoading"
          />
         </v-col>
         <v-col cols="12" md="6">
@@ -43,6 +44,7 @@
           label="Email"
           :rules="[rules.required, rules.email]"
           dense
+          :loading="profileLoading"
          />
         </v-col>
         <v-col cols="12" md="6">
@@ -195,8 +197,12 @@ const { singleDoctor } = storeToRefs(doctorStore)
 const userStore = useUserStore()
 onMounted(async () => {
  await userStore.getMyProfileStore()
+ if (myProfile.value) {
+  form.value.patient_name = myProfile.value.name || ''
+  form.value.email = myProfile.value.user.email || ''
+ }
 })
-const { myProfile } = storeToRefs(userStore)
+const { myProfile, loading: profileLoading } = storeToRefs(userStore)
 
 ////////////// Load Schedule slots ///////////////
 const scheduleStore = useScheduleStore()

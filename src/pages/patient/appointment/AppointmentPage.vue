@@ -24,12 +24,8 @@ import { onMounted } from 'vue'
 const headers = [
  { title: 'Appointment_Number', key: 'appointment_number' },
  { title: 'Patient', key: 'patient_name' },
- { title: 'Email', key: 'email', align: 'center' },
- { title: 'Phone', key: 'phone_number', align: 'center' },
  { title: 'Specialization', key: 'specialization', align: 'center' },
- // { title: 'Hospital', key: 'hospital_affiliation', align: 'center' },
  { title: 'Fees', key: 'fees', align: 'center' },
- { title: 'Booking', key: 'created_at', align: 'center' },
  { title: 'Appointment Date', key: 'appointment_date', align: 'center' },
  { title: 'Slot', key: 'appointment_start_time', align: 'center' },
  { title: 'Status', key: 'status', align: 'center' },
