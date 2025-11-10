@@ -130,6 +130,7 @@ import { useAppointmentStore } from '@/pinia/stores/appointmentStore'
 import { useDoctorStore } from '@/pinia/stores/doctorStore'
 import { useScheduleStore } from '@/pinia/stores/scheduleStore'
 import { useSnackbarStore } from '@/pinia/stores/snackbarStore'
+import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, watch } from 'vue'
 import { ref } from 'vue'
@@ -189,6 +190,13 @@ onMounted(async () => {
  }
 })
 const { singleDoctor } = storeToRefs(doctorStore)
+
+////////////  Load User data ////////////////
+const userStore = useUserStore()
+onMounted(async () => {
+ await userStore.getMyProfileStore()
+})
+const { myProfile } = storeToRefs(userStore)
 
 ////////////// Load Schedule slots ///////////////
 const scheduleStore = useScheduleStore()

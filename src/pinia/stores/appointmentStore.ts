@@ -12,7 +12,7 @@ export interface Appointment {
  notes: string
  appointment_date: string
  appointment_time: string
- created_at: string
+ created_at?: string
 }
 export const useAppointmentStore = defineStore('appointment', {
  state: (): {
