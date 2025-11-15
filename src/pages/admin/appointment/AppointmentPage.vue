@@ -27,7 +27,7 @@ const headers = [
  { title: 'Email', key: 'email', align: 'center' },
  { title: 'Phone', key: 'phone_number', align: 'center' },
  { title: 'Specialization', key: 'specialization', align: 'center' },
- { title: 'Hospital', key: 'hospital_affiliation', align: 'center' },
+ // { title: 'Hospital', key: 'hospital_affiliation', align: 'center' },
  { title: 'Fees', key: 'fees', align: 'center' },
  { title: 'Booking', key: 'created_at', align: 'center' },
  { title: 'Appointment Date', key: 'appointment_date', align: 'center' },
