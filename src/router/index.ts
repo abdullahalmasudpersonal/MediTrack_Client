@@ -75,6 +75,11 @@ const routes = [
     component: () => import('@/pages/admin/schedule/SchedulePage.vue'),
    },
    {
+    path: 'create-schedule',
+    name: 'create-schedule',
+    component: () => import('@/pages/admin/schedule/CreateSchedule.vue'),
+   },
+   {
     path: 'users',
     name: 'admin-users',
     component: () => import('@/pages/admin/users/AdminUsers.vue'),

@@ -56,7 +56,10 @@ const menuItems = [
  {
   title: 'Schedule',
   icon: 'mdi-account-injury-outline',
-  children: [{ title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' }],
+  children: [
+   { title: 'List', icon: 'mdi-list-box', to: '/admin/doctor-list' },
+   { title: 'Create Schedule', icon: 'mdi-list-box', to: '/admin/create-schedule' },
+  ],
  },
  {
   title: 'Doctor',
