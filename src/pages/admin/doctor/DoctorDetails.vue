@@ -1,6 +1,14 @@
 <template>
  <!-- <div>Doctor id: {{ singleDoctorforAdmin?.user.id }}</div> -->
- <div>Doctor name: {{ singleDoctor?.name }}</div>
+ <div>
+  <v-form>
+   <v-row dense>
+    <v-col cols="12" md="6">
+     <v-text-field label="Name" />
+    </v-col>
+   </v-row>
+  </v-form>
+ </div>
 </template>
 
 <script setup lang="ts">
