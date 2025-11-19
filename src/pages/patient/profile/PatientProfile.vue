@@ -1,6 +1,19 @@
 <template>
  <div>
   <!--  -->
+  <div
+   style="
+    height: 70px;
+    background: #3e1b91;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+   "
+  >
+   <p class="text-h5 font-weight-bold">My Profile</p>
+  </div>
   <div style="margin-bottom: 30px">
    <div class="patient-profile-top-part-div1"></div>
    <div class="patient-profile-top-part-div2">
