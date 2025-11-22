@@ -17,9 +17,17 @@
       </p>
      </div>
     </div>
+    <div>
+     <v-btn @click="updateProfile = !updateProfile">{{
+      updateProfile == true ? 'Cancel Profile' : 'Update Profile'
+     }}</v-btn>
+    </div>
    </div>
   </div>
-  <v-card class="pa-6" color="#002B50">
+
+  <v-card v-if="updateProfile"> update Profile data</v-card>
+
+  <v-card v-else class="pa-6" color="#002B50">
    <v-card-title class="text-h6 text-white mb-4" style="padding-left: 0; font-weight: bold">
     Personal Information
    </v-card-title>
@@ -59,6 +67,7 @@
     </v-col>
    </v-row>
   </v-card>
+
   <!-- <div class="doctor-profile-data">
    <h3 style="margin-bottom: 5px">About</h3>
    <v-row>
@@ -120,7 +129,9 @@ import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
 import { onMounted } from 'vue'
 import default_profile_img from '@/assets/image/profile/default-user_withBG.png'
+import { ref } from 'vue'
 
+const updateProfile = ref(false)
 const userStore = useUserStore()
 const { myProfile } = storeToRefs(userStore)
 onMounted(async () => {
