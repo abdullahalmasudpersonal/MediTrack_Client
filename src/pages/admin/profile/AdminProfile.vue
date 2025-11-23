@@ -1,9 +1,27 @@
 <template>
  <div>
+  <div
+   style="
+    height: 70px;
+    background-color: blueviolet;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+   "
+  >
+   <p>My Profile</p>
+   <v-btn color="primary" @click="updateProfile = !updateProfile">
+    <v-icon start>mdi-pencil</v-icon>
+    {{ updateProfile == true ? 'Cancel' : 'Edit' }}
+   </v-btn>
+  </div>
   <div style="margin-bottom: 30px">
    <div class="admin-profile-top-part-div1"></div>
    <div class="admin-profile-top-part-div2">
     <img :src="myProfile?.photo || default_profile_img" />
+
     <div>
      <p class="admin-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="adminRoleJoinDate">
@@ -16,11 +34,6 @@
        <small style="font-size: 16px"> Joined April 2021</small>
       </p>
      </div>
-    </div>
-    <div>
-     <v-btn @click="updateProfile = !updateProfile">{{
-      updateProfile == true ? 'Cancel Profile' : 'Update Profile'
-     }}</v-btn>
     </div>
    </div>
   </div>
