@@ -109,6 +109,11 @@ const routes = [
     name: 'admin-profile',
     component: () => import('@/pages/admin/profile/AdminProfile.vue'),
    },
+   {
+    path: 'setting',
+    name: 'setting',
+    component: () => import('@/pages/settings/settingsPage.vue'),
+   },
   ],
  },
  {

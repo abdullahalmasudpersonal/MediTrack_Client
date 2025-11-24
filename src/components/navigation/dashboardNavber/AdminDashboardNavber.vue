@@ -94,7 +94,7 @@ const logout = () => {
 // ///////////// profile box data /////////////
 const items = [
  { title: 'Profile', icon: 'mdi-account', to: '/admin/admin-profile' },
- { title: 'Setting', icon: 'mdi-cog', to: '' },
+ { title: 'Setting', icon: 'mdi-cog', to: '/admin/setting' },
 ]
 
 /////////////// load profile data //////////
