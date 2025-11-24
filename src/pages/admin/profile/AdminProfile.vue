@@ -3,7 +3,7 @@
   <div
    style="
     height: 70px;
-    background-color: blueviolet;
+    background-color: #3e1b91;
     border-radius: 5px 5px 0 0;
     display: flex;
     justify-content: space-between;
@@ -11,17 +11,17 @@
     padding: 20px;
    "
   >
-   <p>My Profile</p>
-   <v-btn color="primary" @click="updateProfile = !updateProfile">
+   <p style="color: white; font-size: 23px; font-weight: 600">My Profile</p>
+   <v-btn class="bg-purple-darken-4" @click="updateProfile = !updateProfile">
     <v-icon start>mdi-pencil</v-icon>
     {{ updateProfile == true ? 'Cancel' : 'Edit' }}
    </v-btn>
   </div>
+
   <div style="margin-bottom: 30px">
    <div class="admin-profile-top-part-div1"></div>
    <div class="admin-profile-top-part-div2">
     <img :src="myProfile?.photo || default_profile_img" />
-
     <div>
      <p class="admin-name">{{ myProfile?.name || 'Loading...' }}</p>
      <div class="adminRoleJoinDate">
@@ -38,7 +38,8 @@
    </div>
   </div>
 
-  <v-card v-if="updateProfile"> update Profile data</v-card>
+  <!-- <v-card v-if="updateProfile"> update Profile data</v-card> -->
+  <UpdateProfileForm v-if="updateProfile" />
 
   <!--  -->
   <v-card v-else class="pa-6" color="#002B50">
@@ -89,6 +90,7 @@ import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import default_profile_img from '@/assets/image/profile/default-user_withBG.png'
+import UpdateProfileForm from './UpdateProfileForm.vue'
 
 const updateProfile = ref(false)
 
@@ -102,10 +104,6 @@ onMounted(async () => {
 <style scoped>
 .admin-profile-top-part-div1 {
  height: 250px;
- border-radius: 5px 5px 0px 0px;
- /* background: linear-gradient(-45deg, #673ab7, #512da8, #604c83, #311b92); */
- /* background-size: 400% 400%; */
- /* animation: gradientShift 20s ease infinite; */
  background-image: url('../../../assets/image/profile/coverPhoto.jpg');
  background-position: center;
  background-size: cover;
