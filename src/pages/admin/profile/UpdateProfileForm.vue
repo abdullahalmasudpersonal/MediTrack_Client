@@ -1,20 +1,3 @@
-<!-- <template>
- <v-card class="pa-6">
-  <p class="text-h6 font-weight-bold">Update Profile Data</p>
-  {{ myProfile?.name }}
- </v-card>
-</template>
-
-<script setup lang="ts">
-import { useUserStore } from '@/pinia/stores/userStore'
-import { storeToRefs } from 'pinia'
-
-const userStore = useUserStore()
-const { myProfile } = storeToRefs(userStore)
-</script>
-
-<style scoped></style> -->
-
 <template>
  <v-card class="pa-6" color="#1E1B45">
   <v-card-title class="text-h6 text-white mb-4" style="padding-left: 0; font-weight: bold">
@@ -90,7 +73,7 @@ const { myProfile } = storeToRefs(userStore)
      />
 
      <v-text-field
-      v-model="form.created_at"
+      :model-value="formatDate(form.created_at)"
       label="Join Date"
       density="comfortable"
       variant="outlined"
@@ -112,6 +95,7 @@ const { myProfile } = storeToRefs(userStore)
 import { reactive, ref, watch } from 'vue'
 import { useUserStore } from '@/pinia/stores/userStore'
 import { storeToRefs } from 'pinia'
+import { formatDate } from '@/components/shared/formatDate'
 
 const emit = defineEmits(['saved', 'cancel'])
 
