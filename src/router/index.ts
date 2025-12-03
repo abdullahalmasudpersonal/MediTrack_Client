@@ -110,9 +110,24 @@ const routes = [
     component: () => import('@/pages/admin/profile/AdminProfile.vue'),
    },
    {
+    path: 'service',
+    name: 'service',
+    component: () => import('@/pages/admin/service/ServicePage.vue'),
+   },
+   {
+    path: 'service-create',
+    name: 'service',
+    component: () => import('@/pages/admin/service/CreateService.vue'),
+   },
+   {
     path: 'setting',
     name: 'setting',
-    component: () => import('@/pages/settings/settingsPage.vue'),
+    component: () => import('@/pages/settings/SettingsPage.vue'),
+   },
+   {
+    path: 'setting',
+    name: 'setting',
+    component: () => import('@/pages/settings/SettingsPage.vue'),
    },
   ],
  },
